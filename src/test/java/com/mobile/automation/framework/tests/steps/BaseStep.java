@@ -1,4 +1,4 @@
-package com.mobile.automation.framework.tests;
+package com.mobile.automation.framework.tests.steps;
 
 import com.mobile.automation.framework.config.AppiumServer;
 import com.mobile.automation.framework.config.drivers.DriverFactory;
@@ -10,7 +10,7 @@ import org.junit.Before;
 /**
  * @author Tomash Gombosh
  */
-public class BaseTest {
+public class BaseStep {
     public static AppiumDriver driver;
 
     @Before

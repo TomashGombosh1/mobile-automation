@@ -1,14 +1,13 @@
-package com.mobile.automation.framework.tests;
+package com.mobile.automation.framework.tests.steps;
 
 import javax.inject.Inject;
 
 import com.mobile.automation.framework.screens.LoginScreen;
-import io.cucumber.java.en.Given;
 
 /**
  * @author Tomash Gombosh
  */
-public class LoginTest extends BaseTest {
+public class LoginStep extends BaseStep {
     @Inject
     private LoginScreen loginScreen;
 
