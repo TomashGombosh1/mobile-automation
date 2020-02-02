@@ -6,7 +6,7 @@ import io.appium.java_client.AppiumDriver;
  * @author Tomash Gombosh
  */
 public class LoginScreen extends AbstractScreen {
-    public LoginScreen(AppiumDriver driver) {
+    public LoginScreen(final AppiumDriver driver) {
         super(driver);
     }
 
