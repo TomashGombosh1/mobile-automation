@@ -1,4 +1,4 @@
-package com.mobile.automation.framework.tests.stepDefinitions;
+package com.mobile.automation.framework.tests;
 
 import javax.inject.Inject;
 
@@ -8,11 +8,11 @@ import io.cucumber.java.en.Given;
 /**
  * @author Tomash Gombosh
  */
-public class LoginSteps extends BaseStep {
+public class LoginTest extends BaseTest {
     @Inject
     private LoginScreen loginScreen;
 
-    @Given("^ I am on the login screen")
+
     public void iAmOnTheLoginScreen() throws Throwable {
         loginScreen.isDisplayed();
     }
