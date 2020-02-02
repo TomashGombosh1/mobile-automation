@@ -1,0 +1,12 @@
+language: java
+sudo: false
+jdk: openjdk11
+install: true
+
+before_script: mvn clean validate
+
+notifications:
+  email:
+    recipients:
+      - tomash.gombosh@qatestlab.eu
+    on_failure: always # default
