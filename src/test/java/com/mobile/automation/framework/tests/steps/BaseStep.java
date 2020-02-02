@@ -3,7 +3,7 @@ package com.mobile.automation.framework.tests.steps;
 import com.mobile.automation.framework.config.AppiumServer;
 import com.mobile.automation.framework.config.drivers.DriverFactory;
 import io.appium.java_client.AppiumDriver;
-import org.junit.AfterClass;
+import org.junit.After;
 import org.junit.Before;
 
 
@@ -19,7 +19,7 @@ public class BaseStep {
         driver = new DriverFactory().getDriver();
     }
 
-    @AfterClass
+    @After
     public void tearDownDriver() {
         if (driver != null) {
             driver.quit();
