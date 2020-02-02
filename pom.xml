@@ -20,10 +20,7 @@
         <selenium.support.version>3.14.0</selenium.support.version>
         <lombok.version>1.18.8</lombok.version>
         <javax.version>1</javax.version>
-        <cucumber.java.version>5.0.0</cucumber.java.version>
-        <cucumber.junit.version>5.0.0</cucumber.junit.version>
-        <cucumber.core.version>5.0.0</cucumber.core.version>
-        <junit.version>4.12</junit.version>
+        <test.ng.verion>7.0.0</test.ng.verion>
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.checkstyle.version>3.1.0</maven.checkstyle.version>
         <maven.pmd.version>3.12.0</maven.pmd.version>
@@ -68,28 +65,9 @@
             <version>${javax.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-core</artifactId>
-            <version>${cucumber.core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.java.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${test.ng.verion}</version>
         </dependency>
     </dependencies>
 

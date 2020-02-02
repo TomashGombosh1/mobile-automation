@@ -1,4 +1,4 @@
-package com.mobile.automation.framework.tests.steps;
+package com.mobile.automation.framework.tests;
 
 import javax.inject.Inject;
 
@@ -7,7 +7,7 @@ import com.mobile.automation.framework.screens.LoginScreen;
 /**
  * @author Tomash Gombosh
  */
-public class LoginStep extends BaseStep {
+public class LoginTest extends BaseTest {
     @Inject
     private LoginScreen loginScreen;
 

@@ -8,7 +8,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Test;
-import com.mobile.automation.framework.tests.steps.BaseStep;
+import com.mobile.automation.framework.tests.BaseTest;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,7 +56,7 @@ public class TestListener implements ITestListener {
     }
 
     private void takeScreenShot(String meatestNumber, String pathName){
-        driver = BaseStep.driver;
+        driver = BaseTest.driver;
         File scrFile = driver.getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(pathName));
