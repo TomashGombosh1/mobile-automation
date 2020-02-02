@@ -3,7 +3,7 @@ sudo: false
 jdk: openjdk11
 install: true
 
-before_script: mvn clean validate
+before_script: mvn validate
 
 notifications:
   email:
