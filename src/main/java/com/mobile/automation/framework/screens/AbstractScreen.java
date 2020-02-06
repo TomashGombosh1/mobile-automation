@@ -1,10 +1,10 @@
 package com.mobile.automation.framework.screens;
 
 import com.mobile.automation.framework.common.AppElement;
+import com.mobile.automation.framework.common.DeviceOs;
 import com.mobile.automation.framework.common.ScrollTo;
 import com.mobile.automation.framework.common.utils.Utils;
 import com.mobile.automation.framework.config.ProjectConfig;
-import com.mobile.automation.framework.config.drivers.DeviceOs;
 import com.mobile.automation.framework.service.Actions;
 import com.mobile.automation.framework.service.Alert;
 import com.mobile.automation.framework.service.Element;

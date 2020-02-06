@@ -3,8 +3,8 @@ package com.mobile.automation.framework.service;
 import javax.inject.Inject;
 
 import com.mobile.automation.framework.common.AppElement;
+import com.mobile.automation.framework.common.DeviceOs;
 import com.mobile.automation.framework.config.ProjectConfig;
-import com.mobile.automation.framework.config.drivers.DeviceOs;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.ElementOption;

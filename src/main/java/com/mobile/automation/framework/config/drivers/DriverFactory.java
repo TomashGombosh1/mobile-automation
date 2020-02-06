@@ -3,6 +3,7 @@ package com.mobile.automation.framework.config.drivers;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.mobile.automation.framework.common.DeviceOs;
 import com.mobile.automation.framework.config.ProjectConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -42,8 +43,8 @@ public class DriverFactory {
     private DesiredCapabilities getIosCapabilities() {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", projectConfig.getPlatformName());
-        capabilities.setCapability("deviceName", projectConfig.getTestDeviceName());
-        capabilities.setCapability("udid", projectConfig.getTestDeviceName());
+        capabilities.setCapability("deviceName", projectConfig.getDeviceName());
+        capabilities.setCapability("udid", projectConfig.getDeviceName());
         capabilities.setCapability("platformVersion", projectConfig.getPlatformVersion());
         capabilities.setCapability("privateDevicesOnly", "true");
         capabilities.setCapability("testobject_app_id", "1");
@@ -55,8 +56,8 @@ public class DriverFactory {
     private DesiredCapabilities getAndroidCapabilities() {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", projectConfig.getPlatformName());
-        capabilities.setCapability("deviceName", projectConfig.getTestDeviceName());
-        capabilities.setCapability("udid", projectConfig.getTestDeviceName());
+        capabilities.setCapability("deviceName", projectConfig.getDeviceName());
+        capabilities.setCapability("udid", projectConfig.getDeviceName());
         capabilities.setCapability("platformVersion", projectConfig.getPlatformVersion());
         capabilities.setCapability("app", projectConfig.getAppPath());
         capabilities.setCapability("noReset", true);

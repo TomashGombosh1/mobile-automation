@@ -12,8 +12,9 @@ import static java.util.Objects.requireNonNull;
  */
 @Data
 @AllArgsConstructor
-public class User {
-    private String userName;
+public class User extends Model {
+    private String email;
+    private String password;
     private String firstName;
     private String lastName;
 

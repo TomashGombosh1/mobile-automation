@@ -33,8 +33,8 @@ public class LocationAlert implements LocationAlertService {
         } else {
             throw new NoSuchElementException(String.format("No such element name %s and locator %s %s",
                     ANDROID_LOCATION_PERMISSIONS_ALLOW_BUTTON.getName(),
-                    ANDROID_LOCATION_PERMISSIONS_DIALOG.getAndroidLoc(),
-                    ANDROID_LOCATION_PERMISSIONS_DIALOG.getIosLoc()));
+                    ANDROID_LOCATION_PERMISSIONS_DIALOG.getAndroidLocator(),
+                    ANDROID_LOCATION_PERMISSIONS_DIALOG.getIosLocator()));
         }
     }
 }
