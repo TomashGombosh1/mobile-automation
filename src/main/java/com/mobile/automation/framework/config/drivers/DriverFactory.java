@@ -41,21 +41,14 @@ public class DriverFactory {
 
     private DesiredCapabilities getIosCapabilities() {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
-        // Dynamic device allocation of an iPhone 7, running iOS 10.3 device
-        capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "10.3");
-        capabilities.setCapability("deviceName", "iPhone 7");
-
-        // Set allocation from private device pool only
+        capabilities.setCapability("platformName", projectConfig.getPlatformName());
+        capabilities.setCapability("deviceName", projectConfig.getTestDeviceName());
+        capabilities.setCapability("udid", projectConfig.getTestDeviceName());
+        capabilities.setCapability("platformVersion", projectConfig.getPlatformVersion());
         capabilities.setCapability("privateDevicesOnly", "true");
-
-        // Set Application under test
         capabilities.setCapability("testobject_app_id", "1");
-
-        // Set Appium version
         capabilities.setCapability("appiumVersion", "1.6.4");
-
-        // Set Appium end point
+        capabilities.setCapability("newCommandTimeout", 5000);
         return capabilities;
     }
 

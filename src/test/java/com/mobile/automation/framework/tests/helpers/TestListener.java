@@ -1,5 +1,6 @@
 package com.mobile.automation.framework.tests.helpers;
 
+import com.mobile.automation.framework.tests.RunCucumber;
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -8,7 +9,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Test;
-import com.mobile.automation.framework.tests.steps.BaseStep;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,7 +56,7 @@ public class TestListener implements ITestListener {
     }
 
     private void takeScreenShot(String meatestNumber, String pathName){
-        driver = BaseStep.driver;
+        driver = RunCucumber.driver;
         File scrFile = driver.getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(pathName));
