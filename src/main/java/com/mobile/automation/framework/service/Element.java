@@ -9,8 +9,9 @@ import javax.inject.Inject;
 import com.mobile.automation.framework.common.AppElement;
 import com.mobile.automation.framework.common.ScrollTo;
 import com.mobile.automation.framework.common.utils.Utils;
-import com.mobile.automation.framework.config.ProjectConfig;
+import com.mobile.automation.framework.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
@@ -26,19 +27,19 @@ import org.openqa.selenium.WebElement;
 @Log4j
 public class Element implements ElementService {
 
-    private final AppiumDriver driver;
+    private final AppiumDriver<MobileElement> driver;
     private final Scroll scrollService;
     private final TouchAction touchAction;
     private final Waits waitsService;
-    private final ProjectConfig projectConfig;
+    private final ApplicationConfig applicationConfig;
 
     @Inject
-    public Element(final AppiumDriver driver, final Scroll scrollService, final TouchAction touchAction, final Waits waitsService) {
+    public Element(final AppiumDriver<MobileElement> driver, final Scroll scrollService, final TouchAction touchAction, final Waits waitsService) {
         this.driver = driver;
         this.scrollService = scrollService;
         this.touchAction = touchAction;
         this.waitsService = waitsService;
-        projectConfig = new ProjectConfig();
+        applicationConfig = new ApplicationConfig();
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Element implements ElementService {
                 log.info(e);
             }
         }
-        return this.find(element.get(projectConfig.getPlatformName()));
+        return this.find(element.get(applicationConfig.getPlatformName()));
     }
 
     @Override
@@ -66,7 +67,7 @@ public class Element implements ElementService {
 
     @Override
     public List findAll(final AppElement element) {
-        return this.findAll(element.get(projectConfig.getPlatformName()));
+        return this.findAll(element.get(applicationConfig.getPlatformName()));
     }
 
     @Override
@@ -81,7 +82,7 @@ public class Element implements ElementService {
 
     @Override
     public boolean isElementVisible(final AppElement element) {
-        return this.isElementVisible(element.get(projectConfig.getPlatformName()));
+        return this.isElementVisible(element.get(applicationConfig.getPlatformName()));
     }
 
     @Override
@@ -98,7 +99,7 @@ public class Element implements ElementService {
 
     @Override
     public boolean isElementPresent(final AppElement element) {
-        return this.isElementPresent(element.get(projectConfig.getPlatformName()));
+        return this.isElementPresent(element.get(applicationConfig.getPlatformName()));
     }
 
     @Override
@@ -144,7 +145,7 @@ public class Element implements ElementService {
     public void scrollDownUntilVisible(final AppElement element) {
         if (!this.isElementVisible(element)) {
             log.info("Scrolling DOWN until " + element.getName() + " is visible...");
-            scrollService.scrollUntilVisible(ScrollTo.DOWN, element.get(projectConfig.getPlatformName()));
+            scrollService.scrollUntilVisible(ScrollTo.DOWN, element.get(applicationConfig.getPlatformName()));
         }
     }
 
@@ -152,7 +153,7 @@ public class Element implements ElementService {
     public void scrollUpUntilVisible(final AppElement element) {
         if (!this.isElementVisible(element)) {
             log.info("Scrolling UP until " + element.getName() + " is visible...");
-            scrollService.scrollUntilVisible(ScrollTo.UP, element.get(projectConfig.getPlatformName()));
+            scrollService.scrollUntilVisible(ScrollTo.UP, element.get(applicationConfig.getPlatformName()));
         }
     }
 
@@ -179,6 +180,6 @@ public class Element implements ElementService {
 
     @Override
     public void scrollFromToElement(final AppElement startElement, final AppElement endElement) {
-        this.scrollFromToElement(startElement.get(projectConfig.getPlatformName()), endElement.get(projectConfig.getPlatformName()));
+        this.scrollFromToElement(startElement.get(applicationConfig.getPlatformName()), endElement.get(applicationConfig.getPlatformName()));
     }
 }

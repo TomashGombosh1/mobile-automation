@@ -3,6 +3,7 @@ package com.mobile.automation.framework.service;
 import javax.inject.Inject;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.Dimension;
@@ -13,12 +14,12 @@ import org.openqa.selenium.Point;
  */
 public class Swipe implements SwipeService {
 
-    private final AppiumDriver driver;
+    private final AppiumDriver<MobileElement> driver;
     private final Dimension winSize;
     private final TouchAction touch;
 
     @Inject
-    public Swipe(final AppiumDriver driver, final Dimension winSize, final TouchAction touchAction) {
+    public Swipe(final AppiumDriver<MobileElement> driver, final Dimension winSize, final TouchAction touchAction) {
         this.driver = driver;
         this.winSize = winSize;
         this.touch = touchAction;

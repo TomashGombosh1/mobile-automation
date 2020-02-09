@@ -4,6 +4,7 @@ import com.mobile.automation.framework.common.AppElement;
 import com.mobile.automation.framework.common.ScrollTo;
 import com.mobile.automation.framework.models.User;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
 import static com.mobile.automation.framework.config.ApplicationProperties.ANDROID_APP_PACKAGE;
@@ -14,21 +15,21 @@ import static com.mobile.automation.framework.config.ApplicationProperties.ANDRO
 public class SignInScreen extends AbstractScreen {
     private static final AppElement EMAIL_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:%s", ANDROID_APP_PACKAGE, "id/email_edit")),
+            By.id(String.format("%s:id/%s", ANDROID_APP_PACKAGE, "email_edit")),
             ScrollTo.NO,
             true);
     private static final AppElement PASSWORD_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:%s", ANDROID_APP_PACKAGE, "id/password_edit")),
+            By.id(String.format("%s:id/%s", ANDROID_APP_PACKAGE, "password_edit")),
             ScrollTo.NO,
             true);
     private static final AppElement LOGIN_BUTTON = new AppElement(
             "Email field",
-            By.id(String.format("%s:%s", ANDROID_APP_PACKAGE, "id/login_button")),
+            By.id(String.format("%s:id/%s", ANDROID_APP_PACKAGE, "login_button")),
             ScrollTo.NO,
             true);
 
-    public SignInScreen(final AppiumDriver driver) {
+    public SignInScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -44,8 +45,17 @@ public class SignInScreen extends AbstractScreen {
     }
 
     public void fillLogin(final String email, final String password) {
-        enterText(EMAIL_FIELD, email);
-        enterText(PASSWORD_FIELD, password);
+        this.fillLogin(new User(data-> {
+            data.setEmail(email);
+            data.setPassword(password);
+        }));
+    }
+
+    public void fillPassword(final String password) {
+        this.fillLogin(new User(data -> {
+            data.setEmail("");
+            data.setPassword(password);
+        }));
     }
 
     public void clickLogin() {

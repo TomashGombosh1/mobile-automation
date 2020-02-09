@@ -3,6 +3,7 @@ package com.mobile.automation.framework.screens;
 import com.mobile.automation.framework.common.AppElement;
 import com.mobile.automation.framework.common.ScrollTo;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
 import static com.mobile.automation.framework.config.ApplicationProperties.ANDROID_APP_PACKAGE;
@@ -22,7 +23,7 @@ public class DashboardScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
-    public DashboardScreen(final AppiumDriver driver) {
+    public DashboardScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 

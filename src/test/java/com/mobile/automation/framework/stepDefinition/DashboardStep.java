@@ -1,9 +1,9 @@
 package com.mobile.automation.framework.stepDefinition;
 
-import javax.inject.Inject;
-
+import com.mobile.automation.framework.Hooks;
 import com.mobile.automation.framework.screens.DashboardScreen;
-import io.cucumber.java.en.Then;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -11,11 +11,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * @author Tomash Gombosh
  */
 public class DashboardStep {
-    @Inject
     private DashboardScreen dashboardScreen;
+
+    public DashboardStep() {
+        this.dashboardScreen = new DashboardScreen(Hooks.driver);
+    }
 
     @Then("^I am on Sign Page$")
     public void iAmOnSignPage() {
         assertThat(dashboardScreen.isDisplayed()).isEqualTo(true);
     }
+
 }

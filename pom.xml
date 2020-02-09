@@ -21,9 +21,7 @@
         <lombok.version>1.18.8</lombok.version>
         <javax.version>1</javax.version>
         <gogle.guice.version>4.2.2</gogle.guice.version>
-        <cucumber.java.version>5.0.0</cucumber.java.version>
-        <cucumber.junit.version>5.0.0</cucumber.junit.version>
-        <cucumber.core.version>5.0.0</cucumber.core.version>
+        <cucumber.version>1.2.5</cucumber.version>
         <junit.version>4.12</junit.version>
         <assertj.core.version>3.12.2</assertj.core.version>
         <maven.compiler.version>3.8.0</maven.compiler.version>
@@ -75,22 +73,27 @@
             <version>${gogle.guice.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.cucumber</groupId>
+            <groupId>info.cukes</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>${cucumber.core.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.cucumber</groupId>
+            <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.java.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.cucumber</groupId>
+            <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.junit.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

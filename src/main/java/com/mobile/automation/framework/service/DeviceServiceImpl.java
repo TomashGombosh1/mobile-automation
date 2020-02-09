@@ -1,7 +1,10 @@
 package com.mobile.automation.framework.service;
 
-import com.mobile.automation.framework.config.ProjectConfig;
+import javax.inject.Inject;
+
+import com.mobile.automation.framework.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import lombok.extern.log4j.Log4j;
 
 /**
@@ -9,10 +12,11 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 public class DeviceServiceImpl implements DeviceService {
+    @Inject
+    private AppiumDriver<MobileElement> driver;
 
-    private final AppiumDriver driver;
-
-    public DeviceServiceImpl(final AppiumDriver driver) {
+    @Inject
+    public DeviceServiceImpl(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
     }
 
@@ -42,11 +46,11 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     public void uninstallAndReinstallApp() {
         log.info("Uninstalling application...");
-        if (driver.isAppInstalled(new ProjectConfig().getPackageName())) {
-            driver.removeApp(new ProjectConfig().getPackageName());
+        if (driver.isAppInstalled(new ApplicationConfig().getPackageName())) {
+            driver.removeApp(new ApplicationConfig().getPackageName());
         }
         log.info("Re-installing application...");
-        this.driver.installApp(new ProjectConfig().getAppPath());
+        this.driver.installApp(new ApplicationConfig().getAppPath());
         this.driver.launchApp();
     }
 

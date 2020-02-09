@@ -1,12 +1,12 @@
 package com.mobile.automation.framework.service;
 
-import com.mobile.automation.framework.config.ProjectConfig;
+import com.mobile.automation.framework.config.ApplicationConfig;
 
 /**
  * @author Tomash Gombosh
  */
 public interface NetworkService {
-    ProjectConfig PROJECT_CONFIG = new ProjectConfig();
+    ApplicationConfig PROJECT_CONFIG = new ApplicationConfig();
     boolean ANDROID = false;
 
     void turnOffAllNetworkConnections();

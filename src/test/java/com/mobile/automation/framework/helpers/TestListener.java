@@ -1,7 +1,8 @@
 package com.mobile.automation.framework.helpers;
 
-import com.mobile.automation.framework.RunCucumber;
+import com.mobile.automation.framework.Hooks;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -17,7 +18,7 @@ import java.util.Date;
 
 
 public class TestListener implements ITestListener {
-    AppiumDriver driver = null;
+    AppiumDriver<MobileElement> driver = null;
     private Logger log = Logger.getLogger(this.getClass().getSimpleName());
     private static final String SCREENSHOT_FOLDER = System.getProperty("user.dir") + File.separator + "logs" + File.separator + "screen" + File.separator + new SimpleDateFormat("MM_dd__hh_mm").format(new Date()) + File.separator;
 
@@ -56,7 +57,7 @@ public class TestListener implements ITestListener {
     }
 
     private void takeScreenShot(String meatestNumber, String pathName){
-        driver = RunCucumber.driver;
+        driver = Hooks.driver;
         File scrFile = driver.getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(pathName));

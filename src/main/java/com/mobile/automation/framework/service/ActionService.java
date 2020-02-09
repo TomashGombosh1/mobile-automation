@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
  */
 public interface ActionService {
 
+    String getText(AppElement appElement);
+
     String getInputValue(AppElement appElement);
 
     String getInputValue(WebElement webElement);
