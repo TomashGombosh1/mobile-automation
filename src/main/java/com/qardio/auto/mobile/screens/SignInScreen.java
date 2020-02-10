@@ -2,8 +2,8 @@ package com.qardio.auto.mobile.screens;
 
 import com.qardio.auto.mobile.common.AppElement;
 import com.qardio.auto.mobile.common.ScrollTo;
-import com.qardio.auto.mobile.models.User;
 import com.qardio.auto.mobile.config.ApplicationProperties;
+import com.qardio.auto.mobile.models.User;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
