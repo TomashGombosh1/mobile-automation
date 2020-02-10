@@ -13,7 +13,7 @@ Feature: Sign Up feature
     When Tap 'Register' button
     Then Profile form is opened
 
-  Scenario: Create new account with valid data
+  Scenario: Create new account with invalid data
     Given Tap on 'Create Account' button
     When Enter invalid information in 'First Name', 'Email' and 'Password' fields
     And Check the box for Terms and Conditions
