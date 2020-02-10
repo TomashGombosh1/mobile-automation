@@ -22,22 +22,26 @@ public class SignUpScreen extends AbstractScreen {
             "Email field",
             By.id("com.getqardio.android:id/email_edit"),
             By.id(""),
-            ScrollTo.NO);
+            ScrollTo.NO,
+            true);
     private static final AppElement PASSWORD_INPUT_FIELD = new AppElement(
             "Password field",
             By.id("com.getqardio.android:id/password_edit"),
             By.id(""),
-            ScrollTo.NO);
+            ScrollTo.NO,
+            true);
     private static final AppElement TERMS_AND_CONDITIONS_CHECKBOX = new AppElement(
             "Terms and conditions checkbox",
             By.id("com.getqardio.android:id/cbReadPrivacyPolicy"),
             By.id(""),
-            ScrollTo.NO);
+            ScrollTo.NO,
+            true);
     private static final AppElement REGISTER_BUTTON = new AppElement(
             "Register button",
             By.id("com.getqardio.android:id/create_account_button"),
             By.id(""),
-            ScrollTo.NO);
+            ScrollTo.NO,
+            true);
 
     public SignUpScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);

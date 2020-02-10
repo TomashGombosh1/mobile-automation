@@ -23,3 +23,11 @@ Feature: Sign In feature
     When I fill invalid user data
     And I tap sign in button
     Then "Sign in" button is not active
+
+  Scenario: Verify forgot password (happy path)
+    Given I am go to the Login Page
+    When Tap on the 'Forgot password?' link
+    And Enter existing email into 'Email' field from 'Reset password' screen
+    And Tap on the 'Reset password' button
+    Then 'We have sent you an email to reset your password' text is displayed
+    And I am redirected to Sign Page

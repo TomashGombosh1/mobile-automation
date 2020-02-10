@@ -27,6 +27,11 @@ public class SignInScreen extends AbstractScreen {
             By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "login_button")),
             ScrollTo.NO,
             true);
+    private static final AppElement FORGOT_PASSWORD_LINK = new AppElement(
+            "Forgot password link",
+            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "forgot_password_textview")),
+            ScrollTo.NO,
+            true);
 
     public SignInScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -57,8 +62,12 @@ public class SignInScreen extends AbstractScreen {
         }));
     }
 
-    public void clickLogin() {
+    public void tapLogin() {
         tap(LOGIN_BUTTON);
+    }
+
+    public void tapForgotPassword() {
+        tap(FORGOT_PASSWORD_LINK);
     }
 
     public boolean isSignInButtonActive() {
