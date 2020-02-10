@@ -49,9 +49,9 @@ public class Swipe implements SwipeService {
 
     @Override
     public void swipeVerticallyByInt(final int startPercent, final int endPercent) {
-        final int startY = (winSize.height * startPercent);
-        final int endY = (winSize.height * endPercent);
-        final int stepX = (winSize.width * 20);
+        final int startY = winSize.height * startPercent;
+        final int endY = winSize.height * endPercent;
+        final int stepX = winSize.width * 20;
 
         final Point startPoint = new Point(stepX, startY);
         final Point endPoint = new Point(stepX, endY);
@@ -82,11 +82,11 @@ public class Swipe implements SwipeService {
     }
 
     @Override
-    public void swipeByInt(int startXPercent, int endXPercent, int startYPercent, int endYPercent) {
-        final int startX = (winSize.width * startXPercent);
-        final int endX = (winSize.width * endXPercent);
-        final int startY = (winSize.height * startYPercent);
-        final int endY = (winSize.height * endYPercent);
+    public void swipeByInt(final int startXPercent, final int endXPercent, final int startYPercent, final int endYPercent) {
+        final int startX = winSize.width * startXPercent;
+        final int endX = winSize.width * endXPercent;
+        final int startY = winSize.height * startYPercent;
+        final int endY = winSize.height * endYPercent;
 
         final Point startPoint = new Point(startX, startY);
         final Point endPoint = new Point(endX, endY);

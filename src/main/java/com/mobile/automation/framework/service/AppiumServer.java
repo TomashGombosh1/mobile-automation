@@ -15,18 +15,18 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 @Log4j
 public class AppiumServer implements AppiumService {
-    final AppiumDriverLocalService SERVICE = buildService();
-    final ApplicationConfig applicationConfig = new ApplicationConfig();
+    private final AppiumDriverLocalService service = buildService();
+    private final ApplicationConfig applicationConfig = new ApplicationConfig();
 
     @Override
     public void startServer() {
-        SERVICE.start();
+        service.start();
         log.info(String.format("Start appium service on the %s", applicationConfig.getAppiumUrl()));
     }
 
     @Override
     public void stopServer() {
-        SERVICE.stop();
+        service.stop();
         log.info(String.format("Stop appium service on the %s", applicationConfig.getAppiumUrl()));
     }
 
@@ -49,7 +49,7 @@ public class AppiumServer implements AppiumService {
         final AppiumServiceBuilder builder = new AppiumServiceBuilder();
         final DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("noReset", "false");
-        builder.withIPAddress(new ApplicationConfig().getAppiumIP());
+        builder.withIPAddress(new ApplicationConfig().getAppiumIp());
         builder.usingPort(Integer.parseInt(new ApplicationConfig().getAppiumPort()));
         builder.withCapabilities(cap);
         builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);

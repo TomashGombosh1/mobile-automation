@@ -18,7 +18,7 @@ import lombok.extern.log4j.Log4j;
 public class ApplicationConfig {
     private String baseUser;
     private String baseUserPassword;
-    private String appiumIP;
+    private String appiumIp;
     private String appiumPort;
     private String deviceName;
     private DeviceType deviceType;
@@ -34,7 +34,7 @@ public class ApplicationConfig {
     }
 
     public String getAppiumUrl() {
-        return "http://" + getAppiumIP() + ":" + getAppiumPort() + "/wd/hub";
+        return "http://" + getAppiumIp() + ":" + getAppiumPort() + "/wd/hub";
     }
 
     private void initProperties() {
@@ -53,7 +53,7 @@ public class ApplicationConfig {
             }
             this.deviceType = !properties.getProperty("device.type").equals("")
                     ? DeviceType.valueOf(properties.getProperty("device.type").toUpperCase()) : DeviceType.SIMULATOR;
-            this.appiumIP = !properties.getProperty("appium.ip").equals("") ? properties.getProperty("appium.ip") : "0.0.0.0";
+            this.appiumIp = !properties.getProperty("appium.ip").equals("") ? properties.getProperty("appium.ip") : "0.0.0.0";
             this.appiumPort = !properties.getProperty("appium.port").equals("") ? properties.getProperty("appium.port") : "4723";
             if (!properties.getProperty("app.path").equals("")) {
                 this.appPath = properties.getProperty("app.path");

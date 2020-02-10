@@ -41,7 +41,7 @@ public class Actions implements ActionService {
     }
 
     @Override
-    public String getText(AppElement appElement) {
+    public String getText(final AppElement appElement) {
        return elementService.find(appElement).getText();
     }
 

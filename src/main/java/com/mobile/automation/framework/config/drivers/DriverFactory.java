@@ -18,10 +18,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 @Log4j
 public class DriverFactory {
     private final ApplicationConfig applicationConfig = new ApplicationConfig();
-    AppiumDriver<MobileElement> driver;
+
 
     public AppiumDriver<MobileElement> getDriver() {
         final DesiredCapabilities capabilities;
+        final AppiumDriver<MobileElement> driver;
         try {
             switch (applicationConfig.getPlatformName()) {
                 case ANDROID:

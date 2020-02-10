@@ -11,8 +11,11 @@ import io.appium.java_client.android.connection.ConnectionState;
 import io.appium.java_client.ios.IOSDriver;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * @author Tomash Gombosh
@@ -21,9 +24,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Network implements NetworkService {
     private AndroidDriver<MobileElement> driverAndroid;
     private IOSDriver<MobileElement> driverIos;
-    private boolean android = false;
+    private boolean android;
 
-    public Network(AppiumDriver<MobileElement> driver) {
+    public Network(final AppiumDriver<MobileElement> driver) {
         if (driver.getPlatformName().equals(DeviceOs.IOS.getDeviceOs())) {
             this.driverIos = (IOSDriver<MobileElement>) driver;
         } else {
@@ -35,7 +38,7 @@ public class Network implements NetworkService {
     @Override
     public void turnOffAllNetworkConnections() {
         log.info(Thread.currentThread().getStackTrace()[1].getMethodName());
-        ConnectionState none = new ConnectionState(ConnectionState.AIRPLANE_MODE_MASK);
+        final ConnectionState none = new ConnectionState(ConnectionState.AIRPLANE_MODE_MASK);
         if (android) {
             driverAndroid.setConnection(none);
         } else if (PROJECT_CONFIG.getDeviceType().equals(DeviceType.SIMULATOR)
@@ -49,8 +52,8 @@ public class Network implements NetworkService {
     @Override
     public void turnOnAllNetworkConnections() {
         log.info(Thread.currentThread().getStackTrace()[1].getMethodName());
-        ConnectionState wifi = new ConnectionState(ConnectionState.WIFI_MASK);
-        ConnectionState data = new ConnectionState(ConnectionState.DATA_MASK);
+        final ConnectionState wifi = new ConnectionState(ConnectionState.WIFI_MASK);
+        final ConnectionState data = new ConnectionState(ConnectionState.DATA_MASK);
         if (android) {
             turnOffAllNetworkConnections();
             driverAndroid.setConnection(wifi);
@@ -67,7 +70,7 @@ public class Network implements NetworkService {
     @Override
     public void turnOnWifiOnly() {
         log.info(Thread.currentThread().getStackTrace()[1].getMethodName());
-        ConnectionState wifi = new ConnectionState(ConnectionState.WIFI_MASK);
+        final ConnectionState wifi = new ConnectionState(ConnectionState.WIFI_MASK);
         if (android) {
             turnOffAllNetworkConnections();
             driverAndroid.setConnection(wifi);
@@ -104,7 +107,7 @@ public class Network implements NetworkService {
     @Override
     public void turnOnCellularOnly() {
         log.info(Thread.currentThread().getStackTrace()[1].getMethodName());
-        ConnectionState data = new ConnectionState(ConnectionState.DATA_MASK);
+        final ConnectionState data = new ConnectionState(ConnectionState.DATA_MASK);
         if (android) {
             turnOffAllNetworkConnections();
             driverAndroid.setConnection(data);
@@ -119,7 +122,7 @@ public class Network implements NetworkService {
     @Override
     public void turnOnAirplaneMode() {
         log.info(Thread.currentThread().getStackTrace()[1].getMethodName());
-        ConnectionState airPlane = new ConnectionState(ConnectionState.AIRPLANE_MODE_MASK);
+        final ConnectionState airPlane = new ConnectionState(ConnectionState.AIRPLANE_MODE_MASK);
         if (android) {
             driverAndroid.setConnection(airPlane);
         } else if (PROJECT_CONFIG.getDeviceType().equals(DeviceType.SIMULATOR)
@@ -130,7 +133,7 @@ public class Network implements NetworkService {
         }
     }
 
-    private void iosConnection(Boolean airplane, boolean wifi, boolean bluetooth) {
+    private void iosConnection(final boolean airplane, final boolean wifi, final boolean bluetooth) {
         log.info("airplane: " + airplane + " wifi: " + wifi + " bluetooth: " + bluetooth);
         final TouchAction touchAction = new TouchAction(driverIos);
         final Swipe swipe = new Swipe(driverIos, driverIos.manage().window().getSize(), touchAction);
@@ -156,54 +159,53 @@ public class Network implements NetworkService {
             try {
                 driverIos.findElement(By.xpath("(//XCUIElementTypeAlert//XCUIElementTypeButton)[last()]")).click();
                 log.info("Clicked on alert button");
-            } catch (Exception e) {
-                log.info("Alert not found");
+            } catch (NoSuchElementException e) {
+                log.info(String.format("Alert not found %s", e.getMessage()));
             }
-            int n = i + 1;
-            log.info("Trying to open control center: " + n + " try.");
+            final int counter = i + 1;
+            log.info("Trying to open control center: " + counter + " try.");
             swipe.swipeByInt(20, height - 5, width / 2, -step);
             try {
                 driverIos.findElement(By.name(airplaneButtonName));
                 break;
-            } catch (Exception e) {
-                log.info("Airplane button not found");
+            } catch (NoSuchElementException e) {
+                log.info(String.format("Alert not found %s", e.getMessage()));
             }
         }
 
         try {
-            MobileElement continueButton = driverIos.findElement(By.name("Continue"));
+            final MobileElement continueButton = driverIos.findElement(By.name("Continue"));
             new WebDriverWait(driverIos, 5).until(ExpectedConditions.elementToBeClickable(continueButton));
             continueButton.click();
-        } catch (Exception e) {
-            log.info("Continue button not found");
+        } catch (NoSuchElementException e) {
+            log.info(String.format("Alert not found %s", e.getMessage()));
         }
 
         try {
-            MobileElement airplaneIcon = driverIos.findElement(By.name(airplaneButtonName));
+            final MobileElement airplaneIcon = driverIos.findElement(By.name(airplaneButtonName));
 
-            String value = airplaneIcon.getAttribute("value");
+            final String value = airplaneIcon.getAttribute("value");
             log.info("Airplane icon state value " + value);
 
-            boolean airplaneIconState = parseBooleanValue(value);
+            final boolean airplaneIconState = parseBooleanValue(value);
             log.info("Airplane icon state " + airplaneIconState);
 
             if (airplaneIconState != airplane) {
                 airplaneIcon.click();
                 log.info("Clicked on Airplane icon");
             }
-
-        } catch (Exception e) {
-            log.info("Can't switch network state: " + e.getMessage());
+        } catch (NoSuchElementException e) {
+            log.info(String.format("Alert not found %s", e.getMessage()));
         }
 
         try {
             Utils.sleep(2000);
-            MobileElement wifiIcon = driverIos.findElement(By.name(wifiButtonName));
+            final MobileElement wifiIcon = driverIos.findElement(By.name(wifiButtonName));
 
-            String value = wifiIcon.getAttribute("value");
+            final String value = wifiIcon.getAttribute("value");
             log.info("Wifi icon state value " + value);
 
-            boolean wifiIconState = parseBooleanValue(value);
+            final boolean wifiIconState = parseBooleanValue(value);
             log.info("Wifi icon state " + wifiIconState);
 
             if (wifiIconState != wifi) {
@@ -211,33 +213,34 @@ public class Network implements NetworkService {
                 log.info("Clicked on WiFi icon");
             }
 
-        } catch (Exception e) {
-            log.info("Can't switch network state: " + e.getMessage());
+        } catch (NoSuchElementException e) {
+            log.info(String.format("Alert not found %s", e.getMessage()));
         }
         try {
             Utils.sleep(2000);
-            MobileElement bluetoothIcon = driverIos.findElement(By.name(bluetoothButtonName));
+            final MobileElement bluetoothIcon = driverIos.findElement(By.name(bluetoothButtonName));
 
-            String value = bluetoothIcon.getAttribute("value");
+            final String value = bluetoothIcon.getAttribute("value");
             log.info("Bluetooth icon state value " + value);
 
-            boolean bluetoothIconState = parseBooleanValue(value);
+            final boolean bluetoothIconState = parseBooleanValue(value);
             log.info("Bluetooth icon state" + bluetoothIconState);
 
             if (bluetoothIconState != bluetooth) {
                 bluetoothIcon.click();
                 log.info("Clicked on Bluetooth icon");
             }
-        } catch (Exception e) {
-            log.info("Can't switch network state: " + e.getMessage());
+        } catch (NoSuchElementException e) {
+            log.info(String.format("Alert not found %s", e.getMessage()));
         }
 
         swipe.swipeVerticallyByInt(width / 2, 0);
         Utils.sleep(2000);
     }
 
-    private boolean parseBooleanValue(String value) {
-        return value.equals("1");
+    private boolean parseBooleanValue(final String value) {
+        requireNonNull(value, "Value can not be null");
+        return "1".equals(value);
     }
 
 }

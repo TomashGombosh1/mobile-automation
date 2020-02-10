@@ -1,7 +1,5 @@
 package com.mobile.automation.framework.service;
 
-import javax.inject.Inject;
-
 import com.mobile.automation.framework.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -12,11 +10,9 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 public class DeviceServiceImpl implements DeviceService {
-    @Inject
-    private AppiumDriver<MobileElement> driver;
+    private final AppiumDriver<MobileElement> driver;
 
-    @Inject
-    public DeviceServiceImpl(AppiumDriver<MobileElement> driver) {
+    public DeviceServiceImpl(final AppiumDriver<MobileElement> driver) {
         this.driver = driver;
     }
 

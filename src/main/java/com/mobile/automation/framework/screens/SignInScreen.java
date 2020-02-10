@@ -45,7 +45,7 @@ public class SignInScreen extends AbstractScreen {
     }
 
     public void fillLogin(final String email, final String password) {
-        this.fillLogin(new User(data-> {
+        this.fillLogin(new User(data -> {
             data.setEmail(email);
             data.setPassword(password);
         }));
