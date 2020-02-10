@@ -42,7 +42,12 @@ public class Actions implements ActionService {
 
     @Override
     public String getText(final AppElement appElement) {
-       return elementService.find(appElement).getText();
+        return elementService.find(appElement).getText();
+    }
+
+    @Override
+    public String getAttribute(final AppElement appElement, final String attribute) {
+        return elementService.find(appElement).getAttribute(attribute);
     }
 
     @Override

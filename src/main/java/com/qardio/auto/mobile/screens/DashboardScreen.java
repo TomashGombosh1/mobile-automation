@@ -36,7 +36,7 @@ public class DashboardScreen extends AbstractScreen {
         tap(SIGN_IN_BUTTON);
     }
 
-    public void tapSignIn() {
+    public void tapSignUp() {
         tap(SIGN_UP_BUTTON);
     }
 }

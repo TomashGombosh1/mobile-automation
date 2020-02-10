@@ -60,4 +60,8 @@ public class SignInScreen extends AbstractScreen {
     public void clickLogin() {
         tap(LOGIN_BUTTON);
     }
+
+    public boolean isSignInButtonActive() {
+        return Boolean.parseBoolean(getAttribute(LOGIN_BUTTON, "enabled"));
+    }
 }

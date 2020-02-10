@@ -72,6 +72,10 @@ public abstract class AbstractScreen {
         return actionsService.getText(appElement);
     }
 
+    public String getAttribute(final AppElement appElement, final String attribute) {
+        return actionsService.getAttribute(appElement, attribute);
+    }
+
     /**
      * Presses the device's Back button. Only functional on Android!
      */

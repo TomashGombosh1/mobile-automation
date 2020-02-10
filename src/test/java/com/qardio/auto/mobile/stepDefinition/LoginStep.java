@@ -5,9 +5,11 @@ import com.qardio.auto.mobile.config.ApplicationConfig;
 import com.qardio.auto.mobile.models.User;
 import com.qardio.auto.mobile.screens.DashboardScreen;
 import com.qardio.auto.mobile.screens.SignInScreen;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -28,7 +30,7 @@ public class LoginStep {
         dashboardScreen.tapLogin();
     }
 
-    @Given("I click sign in button")
+    @Given("I (?:tap|click) sign in button")
     public void iClickSignInButton() {
         signInScreen.clickLogin();
     }
@@ -43,6 +45,27 @@ public class LoginStep {
         signInScreen.fillLogin(new User(data -> {
             data.setEmail(new ApplicationConfig().getBaseUser());
             data.setPassword(new ApplicationConfig().getBaseUserPassword());
+        }));
+    }
+
+    @When("^I fill non existing user data$")
+    public void iFillNonExistingUserData() {
+        signInScreen.fillLogin(new User(data -> {
+            data.setEmail("qashouldnotexist@gmail.com");
+            data.setPassword("12345678");
+        }));
+    }
+
+    @Then("^\"Sign in\" button (is|is not) active$")
+    public void buttonIsNotActive(String status) {
+        assertThat(signInScreen.isSignInButtonActive()).isEqualTo(false);
+    }
+
+    @When("^I fill invalid user data$")
+    public void iFillInvalidUserData() {
+        signInScreen.fillLogin(new User(data -> {
+            data.setEmail("qashouldnotexist@@@gmail.com");
+            data.setPassword("12345");
         }));
     }
 }
