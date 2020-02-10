@@ -3,9 +3,10 @@ package com.mobile.automation.framework.service;
 import javax.inject.Inject;
 
 import com.mobile.automation.framework.common.AppElement;
-import com.mobile.automation.framework.config.ProjectConfig;
-import com.mobile.automation.framework.config.drivers.DeviceOs;
+import com.mobile.automation.framework.common.DeviceOs;
+import com.mobile.automation.framework.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
@@ -20,23 +21,28 @@ import org.openqa.selenium.WebElement;
 @Log4j
 public class Actions implements ActionService {
 
-    private final AppiumDriver driver;
+    private final AppiumDriver<MobileElement> driver;
     private final Element elementService;
     private final Dimension winSize;
     private final TouchAction touchAction;
-    private final ProjectConfig projectConfig;
+    private final ApplicationConfig applicationConfig;
 
     @Inject
-    public Actions(final AppiumDriver driver,
+    public Actions(final AppiumDriver<MobileElement> driver,
                    final Element element,
                    final Dimension winSize,
                    final TouchAction touchAction,
-                   final ProjectConfig projectConfig) {
+                   final ApplicationConfig applicationConfig) {
         this.driver = driver;
         this.elementService = element;
         this.winSize = winSize;
         this.touchAction = touchAction;
-        this.projectConfig = projectConfig;
+        this.applicationConfig = applicationConfig;
+    }
+
+    @Override
+    public String getText(final AppElement appElement) {
+       return elementService.find(appElement).getText();
     }
 
     @Override
@@ -52,7 +58,7 @@ public class Actions implements ActionService {
     public String getInputValue(final WebElement webElement) {
         String value;
 
-        if (projectConfig.getPlatformName().equals(DeviceOs.ANDROID)) {
+        if (applicationConfig.getPlatformName().equals(DeviceOs.ANDROID)) {
             value = webElement.getText();
         } else {
             value = webElement.getAttribute("value");

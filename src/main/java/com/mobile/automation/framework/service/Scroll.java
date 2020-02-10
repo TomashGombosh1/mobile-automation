@@ -6,8 +6,9 @@ import javax.inject.Inject;
 
 import com.google.common.base.Function;
 import com.mobile.automation.framework.common.ScrollTo;
-import com.mobile.automation.framework.config.ProjectConfig;
+import com.mobile.automation.framework.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -29,10 +30,10 @@ public class Scroll implements ScrollService {
     private final Wait<WebDriver> fluentWait;
 
     @Inject
-    public Scroll(final AppiumDriver driver, final Swipe swipeService, final ProjectConfig projectConfig) {
+    public Scroll(final AppiumDriver<MobileElement> driver, final Swipe swipeService, final ApplicationConfig applicationConfig) {
         this.swipeService = swipeService;
         fluentWait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(projectConfig.getTimeout()))
+                .withTimeout(Duration.ofSeconds(applicationConfig.getTimeout()))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoreAll(Arrays.asList(ElementNotVisibleException.class,
                         NoSuchElementException.class,

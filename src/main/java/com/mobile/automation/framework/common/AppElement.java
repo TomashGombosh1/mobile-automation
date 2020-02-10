@@ -2,7 +2,6 @@ package com.mobile.automation.framework.common;
 
 import java.util.function.Consumer;
 
-import com.mobile.automation.framework.config.drivers.DeviceOs;
 import com.mobile.automation.framework.exception.NoSuchOsException;
 import io.appium.java_client.MobileBy;
 import lombok.AllArgsConstructor;
@@ -18,45 +17,49 @@ import static java.util.Objects.requireNonNull;
 @AllArgsConstructor
 public class AppElement {
     private String name;
-    private By androidLoc;
-    private By iosLoc;
+    private By androidLocator;
+    private By iosLocator;
     private ScrollTo scrollTo;
     private boolean required;
-
-    public AppElement(final String name, final MobileBy androidLoc, final MobileBy iosLoc, final ScrollTo scrollTo, final boolean required) {
-        this.name = name;
-        this.androidLoc = androidLoc;
-        this.iosLoc = iosLoc;
-        this.scrollTo = scrollTo;
-        this.required = required;
-    }
 
     public AppElement(final Consumer<AppElement> builder) {
         requireNonNull(builder).accept(this);
     }
 
-    public AppElement(final String name, final By androidLoc, final By iosLoc, final boolean required) {
-        this(name, androidLoc, iosLoc, ScrollTo.NO, required);
+    /**
+     * App element only for the android
+     *
+     * @param name           element name
+     * @param androidLocator element android locator
+     * @param scrollTo       scroll to element
+     * @param required       is element required
+     */
+    public AppElement(final String name, final By androidLocator, final ScrollTo scrollTo, final boolean required) {
+        this(name, androidLocator, null, scrollTo, required);
     }
 
-    public AppElement(final String name, final MobileBy androidLoc, final MobileBy iosLoc, final boolean required) {
-        this(name, androidLoc, iosLoc, ScrollTo.NO, required);
+    public AppElement(final String name, final By androidLocator, final By iosLocator, final boolean required) {
+        this(name, androidLocator, iosLocator, ScrollTo.NO, required);
     }
 
-    public AppElement(final String name, final By androidLoc, final By iosLoc, final ScrollTo scrollTo) {
-        this(name, androidLoc, iosLoc, scrollTo, false);
+    public AppElement(final String name, final MobileBy androidLocator, final MobileBy iosLocator, final boolean required) {
+        this(name, androidLocator, iosLocator, ScrollTo.NO, required);
     }
 
-    public AppElement(final String name, final MobileBy androidLoc, final MobileBy iosLoc, final ScrollTo scrollTo) {
-        this(name, androidLoc, iosLoc, scrollTo, false);
+    public AppElement(final String name, final By androidLocator, final By iosLocator, final ScrollTo scrollTo) {
+        this(name, androidLocator, iosLocator, scrollTo, false);
     }
 
-    public AppElement(final String name, final By androidLoc, final By iosLoc) {
-        this(name, androidLoc, iosLoc, ScrollTo.NO);
+    public AppElement(final String name, final MobileBy androidLocator, final MobileBy iosLocator, final ScrollTo scrollTo) {
+        this(name, androidLocator, iosLocator, scrollTo, false);
     }
 
-    public AppElement(final String name, final MobileBy androidLoc, final MobileBy iosLoc) {
-        this(name, androidLoc, iosLoc, ScrollTo.NO);
+    public AppElement(final String name, final By androidLocator, final By iosLocator) {
+        this(name, androidLocator, iosLocator, ScrollTo.NO);
+    }
+
+    public AppElement(final String name, final MobileBy androidLocator, final MobileBy iosLocator) {
+        this(name, androidLocator, iosLocator, ScrollTo.NO);
     }
 
     /**
@@ -68,9 +71,9 @@ public class AppElement {
     public By get(final DeviceOs deviceType) {
         By loc;
         if (deviceType.equals(DeviceOs.ANDROID)) {
-            loc = this.androidLoc;
+            loc = this.androidLocator;
         } else if (deviceType.equals(DeviceOs.IOS)) {
-            loc = this.iosLoc;
+            loc = this.iosLocator;
         } else {
             throw new NoSuchOsException("OS of the device should be Android or iOS, you use another one");
         }

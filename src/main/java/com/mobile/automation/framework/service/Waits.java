@@ -6,8 +6,9 @@ import javax.inject.Inject;
 
 import com.google.common.base.Function;
 import com.mobile.automation.framework.common.AppElement;
-import com.mobile.automation.framework.config.ProjectConfig;
+import com.mobile.automation.framework.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -28,16 +29,16 @@ import static java.util.Objects.requireNonNull;
  */
 @Log4j
 public class Waits implements WaitService {
-    private final ProjectConfig projectConfig;
+    private final ApplicationConfig applicationConfig;
     private final WebDriverWait webDriverWait;
     private final Wait<WebDriver> fluentWait;
 
     @Inject
-    public Waits(final AppiumDriver driver, final ProjectConfig projectConfig) {
-        this.projectConfig = projectConfig;
-        webDriverWait = new WebDriverWait(driver, projectConfig.getTimeout());
+    public Waits(final AppiumDriver<MobileElement> driver, final ApplicationConfig applicationConfig) {
+        this.applicationConfig = applicationConfig;
+        webDriverWait = new WebDriverWait(driver, applicationConfig.getTimeout());
         fluentWait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(projectConfig.getTimeout()))
+                .withTimeout(Duration.ofSeconds(applicationConfig.getTimeout()))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoreAll(Arrays.asList(ElementNotVisibleException.class,
                         NoSuchElementException.class,
@@ -52,7 +53,7 @@ public class Waits implements WaitService {
 
     @Override
     public void waitToBeVisible(final AppElement element) {
-        this.waitToBeVisible(element.get(projectConfig.getPlatformName()));
+        this.waitToBeVisible(element.get(applicationConfig.getPlatformName()));
     }
 
     @Override
@@ -62,18 +63,18 @@ public class Waits implements WaitService {
 
     @Override
     public void waitToBeInvisible(final By element) {
-        this.waitToBeInvisible(element, projectConfig.getTimeout());
+        this.waitToBeInvisible(element, applicationConfig.getTimeout());
     }
 
     @Override
     public void waitToBeInvisible(final AppElement element, final int timeout) {
         log.info("Wait to be invisible " + element.getName() + " ...");
-        this.waitToBeInvisible(element.get(projectConfig.getPlatformName()), timeout);
+        this.waitToBeInvisible(element.get(applicationConfig.getPlatformName()), timeout);
     }
 
     @Override
     public void waitToBeInvisible(final AppElement element) {
-        this.waitToBeInvisible(element.get(projectConfig.getPlatformName()), projectConfig.getTimeout());
+        this.waitToBeInvisible(element.get(applicationConfig.getPlatformName()), applicationConfig.getTimeout());
     }
 
     @Override
@@ -83,17 +84,17 @@ public class Waits implements WaitService {
 
     @Override
     public void waitToBeClickable(final By element) {
-        this.waitToBeClickable(element, projectConfig.getTimeout());
+        this.waitToBeClickable(element, applicationConfig.getTimeout());
     }
 
     @Override
     public void waitToBeClickable(final AppElement element, final int timeout) {
-        this.waitToBeClickable(element.get(projectConfig.getPlatformName()), timeout);
+        this.waitToBeClickable(element.get(applicationConfig.getPlatformName()), timeout);
     }
 
     @Override
     public void waitToBeClickable(final AppElement element) {
-        this.waitToBeClickable(element.get(projectConfig.getPlatformName()), projectConfig.getTimeout());
+        this.waitToBeClickable(element.get(applicationConfig.getPlatformName()), applicationConfig.getTimeout());
     }
 
     @Override
@@ -103,16 +104,16 @@ public class Waits implements WaitService {
 
     @Override
     public void waitToBePresent(final By element) {
-        this.waitToBePresent(element, projectConfig.getTimeout());
+        this.waitToBePresent(element, applicationConfig.getTimeout());
     }
 
     @Override
     public void waitToBePresent(final AppElement element, final int timeout) {
-        this.waitToBePresent(element.get(projectConfig.getPlatformName()), timeout);
+        this.waitToBePresent(element.get(applicationConfig.getPlatformName()), timeout);
     }
 
     @Override
     public void waitToBePresent(final AppElement element) {
-        this.waitToBePresent(element.get(projectConfig.getPlatformName()), projectConfig.getTimeout());
+        this.waitToBePresent(element.get(applicationConfig.getPlatformName()), applicationConfig.getTimeout());
     }
 }

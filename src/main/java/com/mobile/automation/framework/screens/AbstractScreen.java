@@ -1,10 +1,10 @@
 package com.mobile.automation.framework.screens;
 
 import com.mobile.automation.framework.common.AppElement;
+import com.mobile.automation.framework.common.DeviceOs;
 import com.mobile.automation.framework.common.ScrollTo;
 import com.mobile.automation.framework.common.utils.Utils;
-import com.mobile.automation.framework.config.ProjectConfig;
-import com.mobile.automation.framework.config.drivers.DeviceOs;
+import com.mobile.automation.framework.config.ApplicationConfig;
 import com.mobile.automation.framework.service.Actions;
 import com.mobile.automation.framework.service.Alert;
 import com.mobile.automation.framework.service.Element;
@@ -12,6 +12,7 @@ import com.mobile.automation.framework.service.Scroll;
 import com.mobile.automation.framework.service.Swipe;
 import com.mobile.automation.framework.service.Waits;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
@@ -25,24 +26,24 @@ import static com.mobile.automation.framework.common.GlobalElements.BACK_BUTTON;
 @Log4j
 public abstract class AbstractScreen {
     protected final Actions actionsService;
-    private final AppiumDriver driver;
+    private final AppiumDriver<MobileElement> driver;
     protected final Alert alertService;
     protected final Element elementService;
     protected final Scroll scrollService;
     protected final Swipe swipeService;
     protected final Waits waitService;
-    private final ProjectConfig projectConfig;
+    private final ApplicationConfig applicationConfig;
 
-    public AbstractScreen(final AppiumDriver driver) {
+    public AbstractScreen(final AppiumDriver<MobileElement> driver) {
         this.driver = driver;
-        projectConfig = new ProjectConfig();
+        applicationConfig = new ApplicationConfig();
         final Dimension winSize = driver.manage().window().getSize();
         final TouchAction touchAction = new TouchAction(driver);
-        waitService = new Waits(driver, projectConfig);
+        waitService = new Waits(driver, applicationConfig);
         swipeService = new Swipe(driver, winSize, touchAction);
-        scrollService = new Scroll(driver, swipeService, projectConfig);
+        scrollService = new Scroll(driver, swipeService, applicationConfig);
         elementService = new Element(driver, scrollService, touchAction, waitService);
-        actionsService = new Actions(driver, elementService, winSize, touchAction, projectConfig);
+        actionsService = new Actions(driver, elementService, winSize, touchAction, applicationConfig);
         alertService = new Alert(actionsService, waitService, elementService);
     }
 
@@ -65,6 +66,10 @@ public abstract class AbstractScreen {
      */
     public String getInputValue(final AppElement element) {
         return actionsService.getInputValue(element);
+    }
+
+    public String getText(final AppElement appElement) {
+        return actionsService.getText(appElement);
     }
 
     /**
@@ -145,7 +150,7 @@ public abstract class AbstractScreen {
      * Hides the keyboard.
      */
     public void hideKeyboard() {
-        if (projectConfig.getPlatformName().equals(DeviceOs.ANDROID.getDeviceOs())) {
+        if (applicationConfig.getPlatformName().equals(DeviceOs.ANDROID.getDeviceOs())) {
             this.driver.hideKeyboard();
         } else {
             this.tapPercent(50, 7);  // taps the title bar

@@ -20,6 +20,7 @@
         <exclude name="UseAssertNullInsteadOfAssertTrue"/>
         <exclude name="UseAssertSameInsteadOfAssertTrue"/>
         <exclude name="UseAssertTrueInsteadOfAssertEquals"/>
+        <exclude name="AvoidUsingHardCodedIP"/>
     </rule>
 
     <rule ref="category/java/codestyle.xml">
@@ -79,7 +80,11 @@
         <exclude name="NPathComplexity"/>
         <exclude name="SimplifyBooleanAssertion"/>
         <exclude name="StdCyclomaticComplexity"/>
+        <!--TODO remove exclude-->
         <exclude name="TooManyFields"/>
+        <exclude name="CyclomaticComplexity"/>
+        <exclude name="ExcessiveMethodLength"/>
+        <exclude name="NcssCount"/>
     </rule>
     <rule ref="category/java/design.xml/TooManyMethods">
         <properties>

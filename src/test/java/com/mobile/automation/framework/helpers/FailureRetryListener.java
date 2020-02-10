@@ -1,4 +1,4 @@
-package com.mobile.automation.framework.tests.helpers;
+package com.mobile.automation.framework.helpers;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;

@@ -1,4 +1,4 @@
-package com.mobile.automation.framework.config.drivers;
+package com.mobile.automation.framework.common;
 
 /**
  * @author Tomash Gombosh
