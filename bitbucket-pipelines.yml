@@ -6,4 +6,4 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean validate
+          - mvn validate
