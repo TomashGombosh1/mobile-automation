@@ -13,10 +13,11 @@ import static java.util.Objects.requireNonNull;
 @Data
 @AllArgsConstructor
 public class User extends Model {
+    private String id;
     private String email;
-    private String password;
     private String firstName;
     private String lastName;
+    private String password;
 
     public User(final Consumer<User> builder) {
         requireNonNull(builder).accept(this);

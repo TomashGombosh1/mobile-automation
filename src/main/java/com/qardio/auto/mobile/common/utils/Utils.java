@@ -50,7 +50,7 @@ public final class Utils {
     /**
      * Gets a formatted id locator for android.
      */
-    public static String formatAndroidId(String id) {
+    public static String formatAndroidId(final String id) {
         return String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, id);
     }
 }

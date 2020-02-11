@@ -1,13 +1,8 @@
 Feature: Sign In feature
 
-  Background:
-    Given I install application
-    And I enable all network activity
-    Then I am on Sign Page
+  Scenario: Sign In with valid credentials scenario
+    Given I am on the "Login" screen
+    When I fill the form with valid data
+    And I tap the "Log in" button
+    Then The "Home" screen is opened
 
-  Scenario: Sign In scenario
-    Given I am go to the Login Page
-    And I fill valid user data using properties file
-    And I click sign in button
-
-    Then I am login in the application
