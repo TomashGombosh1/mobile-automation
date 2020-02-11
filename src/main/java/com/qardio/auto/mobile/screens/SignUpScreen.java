@@ -7,6 +7,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
+import static com.qardio.auto.mobile.common.utils.Utils.formatAndroidId;
+
 /**
  * @author Oleksii Borzykin
  */
@@ -14,31 +16,31 @@ public class SignUpScreen extends AbstractScreen {
 
     private static final AppElement NAME_INPUT_FIELD = new AppElement(
             "Name field",
-            By.id("com.getqardio.android:id/name_edit"),
+            By.id(formatAndroidId("name_edit")),
             By.id(""),
             ScrollTo.NO,
             true);
     private static final AppElement EMAIL_INPUT_FIELD = new AppElement(
             "Email field",
-            By.id("com.getqardio.android:id/email_edit"),
+            By.id(formatAndroidId("email_edit")),
             By.id(""),
             ScrollTo.NO,
             true);
     private static final AppElement PASSWORD_INPUT_FIELD = new AppElement(
             "Password field",
-            By.id("com.getqardio.android:id/password_edit"),
+            By.id(formatAndroidId("password_edit")),
             By.id(""),
             ScrollTo.NO,
             true);
     private static final AppElement TERMS_AND_CONDITIONS_CHECKBOX = new AppElement(
             "Terms and conditions checkbox",
-            By.id("com.getqardio.android:id/cbReadPrivacyPolicy"),
+            By.id(formatAndroidId("password_edit")),
             By.id(""),
             ScrollTo.NO,
             true);
     private static final AppElement REGISTER_BUTTON = new AppElement(
             "Register button",
-            By.id("com.getqardio.android:id/create_account_button"),
+            By.id(formatAndroidId("password_edit")),
             By.id(""),
             ScrollTo.NO,
             true);
@@ -55,7 +57,7 @@ public class SignUpScreen extends AbstractScreen {
     }
 
     public void fillSignup(final String name, final String email, final String password) {
-        fillSignup(new User(data -> {
+        this.fillSignup(new User(data -> {
             data.setLastName(name);
             data.setEmail(email);
             data.setPassword(password);

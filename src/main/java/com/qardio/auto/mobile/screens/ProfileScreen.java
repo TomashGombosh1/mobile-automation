@@ -13,6 +13,6 @@ public class ProfileScreen extends AbstractScreen {
 
     @Override
     public boolean isDisplayed() {
-        return false;
+        return allRequiredElementDisplayed();
     }
 }

@@ -2,11 +2,12 @@ package com.qardio.auto.mobile.screens;
 
 import com.qardio.auto.mobile.common.AppElement;
 import com.qardio.auto.mobile.common.ScrollTo;
-import com.qardio.auto.mobile.config.ApplicationProperties;
 import com.qardio.auto.mobile.models.User;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+
+import static com.qardio.auto.mobile.common.utils.Utils.formatAndroidId;
 
 /**
  * @author Tomash Gombosh
@@ -14,22 +15,22 @@ import org.openqa.selenium.By;
 public class SignInScreen extends AbstractScreen {
     private static final AppElement EMAIL_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "email_edit")),
+            By.id(formatAndroidId("email_edit")),
             ScrollTo.NO,
             true);
     private static final AppElement PASSWORD_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "password_edit")),
+            By.id(formatAndroidId("password_edit")),
             ScrollTo.NO,
             true);
     private static final AppElement LOGIN_BUTTON = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "login_button")),
+            By.id(formatAndroidId("login_button")),
             ScrollTo.NO,
             true);
     private static final AppElement FORGOT_PASSWORD_LINK = new AppElement(
             "Forgot password link",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "forgot_password_textview")),
+            By.id(formatAndroidId("forgot_password_textview")),
             ScrollTo.NO,
             true);
 

@@ -2,11 +2,12 @@ package com.qardio.auto.mobile.screens;
 
 import com.qardio.auto.mobile.common.AppElement;
 import com.qardio.auto.mobile.common.ScrollTo;
-import com.qardio.auto.mobile.config.ApplicationProperties;
 import com.qardio.auto.mobile.models.User;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+
+import static com.qardio.auto.mobile.common.utils.Utils.formatAndroidId;
 
 /**
  * @author Oleksii Borzykin
@@ -14,12 +15,12 @@ import org.openqa.selenium.By;
 public class ForgotPasswordScreen extends AbstractScreen {
     private static final AppElement EMAIL_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "email_edit")),
+            By.id(formatAndroidId("email_edit")),
             ScrollTo.NO,
             true);
     private static final AppElement RESET_PASSWORD_BUTTON = new AppElement(
             "Reset password button",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "reset_password_button")),
+            By.id(formatAndroidId("reset_password_button")),
             ScrollTo.NO,
             true);
 
@@ -40,10 +41,7 @@ public class ForgotPasswordScreen extends AbstractScreen {
         tap(RESET_PASSWORD_BUTTON);
     }
 
-    //todo pop-up text locator and logic
-    public String getPopupText() {
-        return "";
-    }
+    //todo pop-up text locator and logic (can't be done without VPN access)
 
     @Override
     public boolean isDisplayed() {
