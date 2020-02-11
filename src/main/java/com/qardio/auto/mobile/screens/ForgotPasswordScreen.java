@@ -34,7 +34,7 @@ public class ForgotPasswordScreen extends AbstractScreen {
     }
 
     public void fillEmail(final String email) {
-        fillEmail(new User(data -> data.setEmail(email)));
+        this.fillEmail(new User(data -> data.setEmail(email)));
     }
 
     public void tapResetPassword() {
