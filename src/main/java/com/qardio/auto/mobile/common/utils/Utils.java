@@ -2,6 +2,7 @@ package com.qardio.auto.mobile.common.utils;
 
 import java.util.Random;
 
+import com.qardio.auto.mobile.config.ApplicationProperties;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -44,5 +45,12 @@ public final class Utils {
     public static int getRandomInteger(final int max) {
         final Random randomGenerator = new Random();
         return randomGenerator.nextInt(max);
+    }
+
+    /**
+     * Gets a formatted id locator for android.
+     */
+    public static String formatAndroidId(String id) {
+        return String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, id);
     }
 }
