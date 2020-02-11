@@ -15,14 +15,14 @@ public class HomeScreen extends AbstractScreen {
     private static final AppElement SCREEN_TITLE = new AppElement(
             "Screen title",
             By.id(formatAndroidId("toolbar_title")),
-            By.id(""),
+            By.xpath("//XCUIElementTypeStaticText[@value='Home']"),
             ScrollTo.NO,
             true);
 
     private static final AppElement MENU_BUTTON = new AppElement(
             "Menu button",
             By.xpath("//android.widget.ImageButton[contains(@content-desc,'Navigate up')]"),
-            By.id(""),
+            By.xpath("//XCUIElementTypeButton[@name='ic menu']"),
             ScrollTo.NO,
             true);
 

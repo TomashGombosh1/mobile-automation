@@ -16,21 +16,21 @@ public class LoginScreen extends AbstractScreen {
     private static final AppElement ID_FIELD = new AppElement(
             "ID field",
             By.id(formatAndroidId("edt_name")),
-            By.id(""),
+            By.xpath("//XCUIElementTypeTextField[@value='ID']"),
             ScrollTo.NO,
             true);
 
     private static final AppElement PASSWORD_FIELD = new AppElement(
             "Password field",
             By.id(formatAndroidId("edt_pwd")),
-            By.id(""),
+            By.xpath("//XCUIElementSecureTypeTextField[@value='Password']"),
             ScrollTo.NO,
             true);
 
     private static final AppElement LOG_IN_BUTTON = new AppElement(
             "Login button",
             By.id(formatAndroidId("btn_login")),
-            By.id(""),
+            By.xpath("//XCUIElementTypeButton[@name='Log In']"),
             ScrollTo.NO,
             true);
 
