@@ -19,6 +19,13 @@ public class HomeScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
+    private static final AppElement MENU_BUTTON = new AppElement(
+            "Menu button",
+            By.xpath("//android.widget.ImageButton[contains(@content-desc,'Navigate up')]"),
+            By.id(""),
+            ScrollTo.NO,
+            true);
+
     public HomeScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
     }
@@ -28,8 +35,14 @@ public class HomeScreen extends AbstractScreen {
         return getText(SCREEN_TITLE);
     }
 
+    public void tapMenuButton() {
+        waitToBeVisible(MENU_BUTTON);
+        tap(MENU_BUTTON);
+    }
+
     @Override
     public boolean isDisplayed() {
+        waitToBeVisible(SCREEN_TITLE);
         return allRequiredElementDisplayed();
     }
 }

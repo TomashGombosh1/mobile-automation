@@ -27,18 +27,34 @@ public class LoginStep {
         loginScreen.isDisplayed();
     }
 
-    @When("^I fill the form with valid data$")
-    public void iFillTheFormWithValidData() {
-        loginScreen.fillLogin("april17d","qwer");
+    @When("^I fill the form with (valid|invalid) data$")
+    public void iFillTheFormWithData(String creds) {
+        if (creds.equals("valid")) {
+            loginScreen.fillLogin("april17d", "qwer");
+        } else {
+            loginScreen.fillLogin("test010101", "0101010test");
+        }
     }
 
     @And("^I tap the \"Log in\" button$")
-    public void iTapTheButton()  {
+    public void iTapTheButton() {
         loginScreen.tapLogInButton();
     }
 
-    @Then("^The \"Home\" screen is opened$")
-    public void theScreenIsOpened() {
-        assertThat(homeScreen.getScreenTitle()).isEqualTo("Home");
+    @Then("^The \"Home\" screen (is|is not) opened$")
+    public void theScreenIsOpened(String status) {
+        if (status.equals("is")) {
+            assertThat(homeScreen.getScreenTitle()).isEqualTo("Home");
+        } else {
+            assertThat(loginScreen.isDisplayed()).isEqualTo(true);
+        }
+    }
+
+    @Given("^I logged in as valid user$")
+    public void iLoggedInAsValidUser() {
+        iAmOnTheScreen();
+        iFillTheFormWithData("valid");
+        iTapTheButton();
+        homeScreen.getScreenTitle();
     }
 }
