@@ -10,6 +10,8 @@ public interface ActionService {
 
     String getText(AppElement appElement);
 
+    String getAttribute(AppElement appElement, String attribute);
+
     String getInputValue(AppElement appElement);
 
     String getInputValue(WebElement webElement);

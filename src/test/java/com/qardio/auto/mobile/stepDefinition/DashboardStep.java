@@ -16,7 +16,7 @@ public class DashboardStep {
         this.dashboardScreen = new DashboardScreen(Hooks.driver);
     }
 
-    @Then("^I am on Sign Page$")
+    @Then("^I am (?:redirected to|on) Sign Page$")
     public void iAmOnSignPage() {
         assertThat(dashboardScreen.isDisplayed()).isEqualTo(true);
     }
