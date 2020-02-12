@@ -23,7 +23,7 @@ public class LoginScreen extends AbstractScreen {
     private static final AppElement PASSWORD_FIELD = new AppElement(
             "Password field",
             By.id(formatAndroidId("edt_pwd")),
-            By.xpath("//XCUIElementSecureTypeTextField[@value='Password']"),
+            By.xpath("//XCUIElementTypeSecureTextField[@value='Password']"),
             ScrollTo.NO,
             true);
 
@@ -58,7 +58,7 @@ public class LoginScreen extends AbstractScreen {
 
     @Override
     public boolean isDisplayed() {
-        waitToBeVisible(ID_FIELD);
+//        waitToBeVisible(ID_FIELD);
         return allRequiredElementDisplayed();
     }
 }
