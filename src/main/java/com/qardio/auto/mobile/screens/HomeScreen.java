@@ -27,6 +27,13 @@ public class HomeScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
+    private static final AppElement QR_LABEL = new AppElement(
+            "QR Label",
+            By.id(formatAndroidId("tvScan")),
+            MobileBy.AccessibilityId("Scan Vehicle"),
+            ScrollTo.NO,
+            true);
+
     public HomeScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
     }
@@ -34,6 +41,11 @@ public class HomeScreen extends AbstractScreen {
     public String getScreenTitle() {
         waitToBeVisible(SCREEN_TITLE);
         return getText(SCREEN_TITLE);
+    }
+
+    public String getQrLabel() {
+        waitToBeVisible(QR_LABEL);
+        return getText(QR_LABEL);
     }
 
     public void tapMenuButton() {

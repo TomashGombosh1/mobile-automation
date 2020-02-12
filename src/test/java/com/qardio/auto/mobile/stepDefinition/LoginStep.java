@@ -45,8 +45,8 @@ public class LoginStep {
     public void theScreenIsOpened(String status) {
         if (status.equals("is")) {
             assertThat(homeScreen.getScreenTitle()).isEqualTo("Home");
-        }
-        if (status.equals("is not")) {
+            assertThat(homeScreen.getQrLabel()).isEqualTo("Scan Vehicle");
+        } else {
             assertThat(loginScreen.isDisplayed()).isEqualTo(true);
         }
     }

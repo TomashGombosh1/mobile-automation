@@ -20,6 +20,13 @@ public class PreDriveChecklistScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
+    private static final AppElement HOS_BUTTON = new AppElement(
+            "HOS button",
+            By.id(formatAndroidId("hos_btn")),
+            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'HOS'"),
+            ScrollTo.NO,
+            true);
+
     public PreDriveChecklistScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
     }
