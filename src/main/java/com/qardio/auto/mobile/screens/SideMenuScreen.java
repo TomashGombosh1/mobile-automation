@@ -20,54 +20,6 @@ public class SideMenuScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
-    private static final AppElement HOME_BUTTON = new AppElement(
-            "Home button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='Home']"),
-            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value == 'Home'"),
-            ScrollTo.NO,
-            true);
-
-    private static final AppElement VEHICLE_BUTTON = new AppElement(
-            "Vehicle button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='Vehicle']"),
-            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value == 'Vehicle' AND visible == 1"),
-            ScrollTo.NO,
-            true);
-
-    private static final AppElement HOS_BUTTON = new AppElement(
-            "HOS button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='HOS']"),
-            MobileBy.iOSClassChain("**/XCUIElementTypeCell/XCUIElementTypeStaticText[`name CONTAINS \"HOS\"`]"),
-            ScrollTo.NO,
-            true);
-
-    private static final AppElement PRE_DRIVE_CHECKLIST_BUTTON = new AppElement(
-            "Pre-drive checklist button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='Pre-drive checklist']"),
-            ScrollTo.NO,
-            true);
-
-    private static final AppElement FMCSA_BUTTON = new AppElement(
-            "FMCSA Data Transfer button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[contains(@text,'FMCSA')]"),
-            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value CONTAINS 'FMCSA Data'"),
-            ScrollTo.NO,
-            true);
-
-    private static final AppElement ACTIONS_BUTTON = new AppElement(
-            "Actions button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='Actions']"),
-            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value == 'Actions'"),
-            ScrollTo.NO,
-            true);
-
-    private static final AppElement WORKFORCE_BUTTON = new AppElement(
-            "Workforce button",
-            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='Workforce']"),
-            MobileBy.iOSClassChain("**/XCUIElementTypeCell/XCUIElementTypeStaticText[`name BEGINSWITH \"Work\"`]"),
-            ScrollTo.NO,
-            true);
-
     private static final AppElement LOG_OUT_BUTTON = new AppElement(
             "Log out button",
             By.xpath("//android.widget.TextView[contains(@text,'Log Out')]"),
@@ -82,34 +34,6 @@ public class SideMenuScreen extends AbstractScreen {
     public String getDriverName() {
         waitToBeVisible(DRIVER_NAME);
         return getText(DRIVER_NAME);
-    }
-
-    public void tapHomeButton() {
-        tap(HOME_BUTTON);
-    }
-
-    public void tapVehicleButton() {
-        tap(VEHICLE_BUTTON);
-    }
-
-    public void tapHosButton() {
-        tap(HOS_BUTTON);
-    }
-
-    public void tapPreDriveChecklistButton() {
-        tap(PRE_DRIVE_CHECKLIST_BUTTON);
-    }
-
-    public void tapFmcsaButton() {
-        tap(FMCSA_BUTTON);
-    }
-
-    public void tapActionsButton() {
-        tap(ACTIONS_BUTTON);
-    }
-
-    public void tapWorkforceButton() {
-        tap(WORKFORCE_BUTTON);
     }
 
     public void tapLogOutButton() {
