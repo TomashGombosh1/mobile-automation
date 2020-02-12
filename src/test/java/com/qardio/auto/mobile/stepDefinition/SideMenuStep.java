@@ -6,7 +6,6 @@ import com.qardio.auto.mobile.screens.HomeScreen;
 import com.qardio.auto.mobile.screens.LogoutScreen;
 import com.qardio.auto.mobile.screens.PreDriveChecklistScreen;
 import com.qardio.auto.mobile.screens.SideMenuScreen;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -35,7 +34,7 @@ public class SideMenuStep {
     }
 
     @Then("^The \"Side menu\" is opened$")
-    public void theIsOpened() {
+    public void theSideMenuIsOpened() {
         assertThat(sideMenuScreen.isDisplayed()).isEqualTo(true);
     }
 
@@ -49,7 +48,7 @@ public class SideMenuStep {
         sideMenuScreen.tapLogOutButton();
     }
 
-    @When("^I tap the \"(Home|Vehicle|HOS)\" menu button$")
+    @When("^I tap the \"(Home|Vehicle|HOS|Actions)\" menu button$")
     public void iTapTheMenuButton(String button) {
         switch (button) {
             case "Home":
@@ -60,6 +59,9 @@ public class SideMenuStep {
                 break;
             case "HOS":
                 sideMenuScreen.tapHosButton();
+                break;
+            case "Actions":
+                sideMenuScreen.tapActionsButton();
                 break;
         }
     }

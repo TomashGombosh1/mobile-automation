@@ -22,3 +22,7 @@ Feature: Side menu feature
     When I tap the "HOS" menu button
     Then The "Pre-drive checklist" screen is opened
 
+  Scenario: User can access Actions screen
+    Given The "Side menu" is opened
+    When I tap the "Actions" menu button
+    Then The "Actions" screen is opened
