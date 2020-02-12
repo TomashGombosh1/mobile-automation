@@ -6,6 +6,7 @@ import com.qardio.auto.mobile.screens.SideMenuScreen;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.NoSuchElementException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -39,5 +40,22 @@ public class SideMenuStep {
     @And("^I scroll down and exit$")
     public void iScrollDownAndExit() {
         sideMenuScreen.tapLogOutButton();
+    }
+
+    @When("^I tap the \"([^\"]*)\" menu button$")
+    public void iTapTheMenuButton(String button) {
+        switch (button) {
+            case "Home":
+                sideMenuScreen.tapHomeButton();
+                break;
+            case "Vehicle":
+                sideMenuScreen.tapVehicleButton();
+                break;
+            case "HOS":
+                sideMenuScreen.tapHosButton();
+                break;
+            default:
+                throw new NoSuchElementException(button + " button");
+        }
     }
 }

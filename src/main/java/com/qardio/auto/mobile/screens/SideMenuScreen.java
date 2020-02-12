@@ -85,14 +85,17 @@ public class SideMenuScreen extends AbstractScreen {
     }
 
     public void tapHomeButton() {
+        waitToBeVisible(HOME_BUTTON);
         tap(HOME_BUTTON);
     }
 
     public void tapVehicleButton() {
+        waitToBeVisible(VEHICLE_BUTTON);
         tap(VEHICLE_BUTTON);
     }
 
     public void tapHosButton() {
+        waitToBeVisible(HOS_BUTTON);
         tap(HOS_BUTTON);
     }
 
