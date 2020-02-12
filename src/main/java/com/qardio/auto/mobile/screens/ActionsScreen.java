@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
 
 import static com.qardio.auto.mobile.common.utils.Utils.formatAndroidId;
 
+/**
+ * @author Oleksii Borzykin
+ */
 public class ActionsScreen extends AbstractScreen {
     private static final AppElement SCREEN_TITLE = new AppElement(
             "Screen title",

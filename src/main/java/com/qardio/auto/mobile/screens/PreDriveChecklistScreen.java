@@ -24,7 +24,7 @@ public class PreDriveChecklistScreen extends AbstractScreen {
             "HOS button",
             By.id(formatAndroidId("hos_btn")),
             MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'HOS'"),
-            ScrollTo.NO,
+            ScrollTo.DOWN,
             true);
 
     public PreDriveChecklistScreen(final AppiumDriver<MobileElement> driver) {
@@ -34,6 +34,11 @@ public class PreDriveChecklistScreen extends AbstractScreen {
     public String getScreenTitle() {
         waitToBeVisible(SCREEN_TITLE);
         return getText(SCREEN_TITLE);
+    }
+
+    public void tapHosButton() {
+        waitToBeVisible(HOS_BUTTON);
+        tap(HOS_BUTTON);
     }
 
     @Override
