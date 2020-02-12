@@ -4,6 +4,7 @@ import com.qardio.auto.mobile.common.AppElement;
 import com.qardio.auto.mobile.common.ScrollTo;
 import com.qardio.auto.mobile.models.User;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
@@ -16,21 +17,21 @@ public class LoginScreen extends AbstractScreen {
     private static final AppElement ID_FIELD = new AppElement(
             "ID field",
             By.id(formatAndroidId("edt_name")),
-            By.xpath("//XCUIElementTypeTextField[@value='ID']"),
+            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeTextField' AND value == 'ID'"),
             ScrollTo.NO,
             true);
 
     private static final AppElement PASSWORD_FIELD = new AppElement(
             "Password field",
             By.id(formatAndroidId("edt_pwd")),
-            By.xpath("//XCUIElementTypeSecureTextField[@value='Password']"),
+            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeSecureTextField' AND value == 'Password'"),
             ScrollTo.NO,
             true);
 
     private static final AppElement LOG_IN_BUTTON = new AppElement(
             "Login button",
             By.id(formatAndroidId("btn_login")),
-            By.xpath("//XCUIElementTypeButton[@name='Log In']"),
+            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'Log In'"),
             ScrollTo.NO,
             true);
 
