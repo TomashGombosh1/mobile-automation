@@ -1,5 +1,8 @@
 package com.qardio.auto.mobile.config.drivers;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import com.qardio.auto.mobile.common.DeviceOs;
 import com.qardio.auto.mobile.config.ApplicationConfig;
 import io.appium.java_client.AppiumDriver;
@@ -9,8 +12,6 @@ import io.appium.java_client.ios.IOSDriver;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * @author Tomash Gombosh
@@ -48,13 +49,13 @@ public class DriverFactory {
         capabilities.setCapability("deviceName", applicationConfig.getDeviceName());
 //        capabilities.setCapability("udid", applicationConfig.getDeviceName());  todo this capability breaks tests on simulator
         capabilities.setCapability("platformVersion", applicationConfig.getPlatformVersion());
-        capabilities.setCapability("app",applicationConfig.getAppPath());
+        capabilities.setCapability("app", applicationConfig.getAppPath());
         capabilities.setCapability("privateDevicesOnly", "true");
         capabilities.setCapability("testobject_app_id", "1");
         capabilities.setCapability("appiumVersion", "1.6.4");
-        capabilities.setCapability("automationName","XCUITest");
+        capabilities.setCapability("automationName", "XCUITest");
         capabilities.setCapability("noReset", true);
-        capabilities.setCapability("autoGrantPermissions",true);
+        capabilities.setCapability("autoGrantPermissions", true);
         capabilities.setCapability("newCommandTimeout", 5000);
         log.info(String.format("Desired Capabilities for device %s", capabilities.toString()));
         return capabilities;
