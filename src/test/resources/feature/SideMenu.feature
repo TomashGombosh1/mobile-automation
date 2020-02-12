@@ -26,3 +26,8 @@ Feature: Side menu feature
     Given The "Side menu" is opened
     When I tap the "Actions" menu button
     Then The "Actions" screen is opened
+
+  Scenario: User can access Workforce screen
+    Given The "Side menu" is opened
+    When I tap the "Workforce" menu button
+    Then The "Workforce" screen is opened

@@ -2,10 +2,8 @@ package com.qardio.auto.mobile.stepDefinition;
 
 import com.qardio.auto.mobile.Hooks;
 import com.qardio.auto.mobile.config.ApplicationProperties;
-import com.qardio.auto.mobile.screens.HomeScreen;
-import com.qardio.auto.mobile.screens.LogoutScreen;
-import com.qardio.auto.mobile.screens.PreDriveChecklistScreen;
-import com.qardio.auto.mobile.screens.SideMenuScreen;
+import com.qardio.auto.mobile.screens.*;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,12 +18,16 @@ public class SideMenuStep {
     private SideMenuScreen sideMenuScreen;
     private PreDriveChecklistScreen preDriveChecklistScreen;
     private LogoutScreen logoutScreen;
+    private ActionsScreen actionsScreen;
+    private WorkforceScreen workforceScreen;
 
     public SideMenuStep() {
         this.homeScreen = new HomeScreen(Hooks.driver);
         this.sideMenuScreen = new SideMenuScreen(Hooks.driver);
         this.preDriveChecklistScreen = new PreDriveChecklistScreen(Hooks.driver);
         this.logoutScreen = new LogoutScreen(Hooks.driver);
+        this.actionsScreen = new ActionsScreen(Hooks.driver);
+        this.workforceScreen = new WorkforceScreen(Hooks.driver);
     }
 
     @When("^I tap the \"Menu\" button$")
@@ -48,7 +50,7 @@ public class SideMenuStep {
         sideMenuScreen.tapLogOutButton();
     }
 
-    @When("^I tap the \"(Home|Vehicle|HOS|Actions)\" menu button$")
+    @When("^I tap the \"(Home|Vehicle|HOS|Actions|Workforce)\" menu button$")
     public void iTapTheMenuButton(String button) {
         switch (button) {
             case "Home":
@@ -63,6 +65,9 @@ public class SideMenuStep {
             case "Actions":
                 sideMenuScreen.tapActionsButton();
                 break;
+            case "Workforce":
+                sideMenuScreen.tapWorkforceButton();
+                break;
         }
     }
 
@@ -70,8 +75,7 @@ public class SideMenuStep {
     public void thePreDriveScreenIsOpened() {
         if (ApplicationProperties.CURRENT_OS.equals("ANDROID")) {
             assertThat(preDriveChecklistScreen.getScreenTitle()).isEqualTo("Pre-drive checklist");
-        }
-        if (ApplicationProperties.CURRENT_OS.equals("IOS")) {
+        } else {
             assertThat(preDriveChecklistScreen.getScreenTitle()).isEqualTo("Log In");
         }
     }
@@ -79,5 +83,19 @@ public class SideMenuStep {
     @Then("^The \"Logout\" screen is opened$")
     public void theLogoutScreenIsOpened() {
         assertThat(logoutScreen.getScreenTitle()).isEqualTo("Logout");
+    }
+
+    @Then("^The \"Actions\" screen is opened$")
+    public void theActionsScreenIsOpened() {
+        assertThat(actionsScreen.getScreenTitle()).isEqualTo("Actions");
+    }
+
+    @Then("^The \"Workforce\" screen is opened$")
+    public void theWorkforcesScreenIsOpened() {
+        if (ApplicationProperties.CURRENT_OS.equals("ANDROID")) {
+            assertThat(workforceScreen.getScreenTitle()).contains("Work");
+        } else {
+            assertThat(workforceScreen.getScreenTitle()).isEqualTo("Jobs");
+        }
     }
 }
