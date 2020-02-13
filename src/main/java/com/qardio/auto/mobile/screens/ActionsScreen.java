@@ -35,12 +35,12 @@ public class ActionsScreen extends AbstractScreen {
             "No records alert",
             By.id("android:id/message"),
             ScrollTo.NO,
-            true);
+            false);
     private static final AppElement NO_RECORD_ALERT_BUTTON = new AppElement(
             "No records alert dismiss button",
             By.id("android:id/button1"),
             ScrollTo.NO,
-            true);
+            false);
 
     public ActionsScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
