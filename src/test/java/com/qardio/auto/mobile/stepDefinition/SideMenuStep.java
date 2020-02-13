@@ -3,7 +3,6 @@ package com.qardio.auto.mobile.stepDefinition;
 import com.qardio.auto.mobile.Hooks;
 import com.qardio.auto.mobile.config.ApplicationProperties;
 import com.qardio.auto.mobile.screens.*;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,6 +19,7 @@ public class SideMenuStep {
     private LogoutScreen logoutScreen;
     private ActionsScreen actionsScreen;
     private WorkforceScreen workforceScreen;
+    private ChatScreen chatScreen;
 
     public SideMenuStep() {
         this.homeScreen = new HomeScreen(Hooks.driver);
@@ -28,6 +28,7 @@ public class SideMenuStep {
         this.logoutScreen = new LogoutScreen(Hooks.driver);
         this.actionsScreen = new ActionsScreen(Hooks.driver);
         this.workforceScreen = new WorkforceScreen(Hooks.driver);
+        this.chatScreen = new ChatScreen(Hooks.driver);
     }
 
     @When("^I tap the \"Menu\" button$")
@@ -97,5 +98,10 @@ public class SideMenuStep {
         } else {
             assertThat(workforceScreen.getScreenTitle()).isEqualTo("Jobs");
         }
+    }
+
+    @Then("^The \"Chat\" screen is opened$")
+    public void theChatScreenIsOpened() {
+        assertThat(chatScreen.isDisplayed()).isEqualTo(true);
     }
 }

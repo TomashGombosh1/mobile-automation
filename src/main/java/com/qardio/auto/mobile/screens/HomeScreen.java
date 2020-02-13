@@ -34,6 +34,20 @@ public class HomeScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
+    private static final AppElement WORKFORCE_BUTTON = new AppElement(
+            "Workforce button",
+            By.xpath("//*[@resource-id='com.iss.hos.phone:id/card_view_recycler_list']//android.widget.TextView[@text='Workforce']"),
+            MobileBy.AccessibilityId("Workforce"),
+            ScrollTo.NO,
+            true);
+
+    private static final AppElement CHAT_BUTTON = new AppElement(
+            "Chat button",
+            By.xpath("//*[@resource-id='com.iss.hos.phone:id/card_view_recycler_list']//android.widget.TextView[@text='Chat']"),
+            MobileBy.AccessibilityId("Chat"),
+            ScrollTo.NO,
+            true);
+
     public HomeScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
     }
@@ -51,6 +65,16 @@ public class HomeScreen extends AbstractScreen {
     public void tapMenuButton() {
         waitToBeVisible(MENU_BUTTON);
         tap(MENU_BUTTON);
+    }
+
+    public void tapWorkforceButton() {
+        waitToBeVisible(WORKFORCE_BUTTON);
+        tap(WORKFORCE_BUTTON);
+    }
+
+    public void tapChatButton() {
+        waitToBeVisible(CHAT_BUTTON);
+        tap(CHAT_BUTTON);
     }
 
     @Override
