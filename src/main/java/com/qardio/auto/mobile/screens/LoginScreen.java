@@ -35,6 +35,11 @@ public class LoginScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
+    private static final AppElement REMEMBER_CHECKBOX = new AppElement(
+            "Remember me checkbox",
+            By.id(formatAndroidId("remember_me")),
+            ScrollTo.NO,
+            true);
 
     public LoginScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -55,6 +60,12 @@ public class LoginScreen extends AbstractScreen {
 
     public void tapLogInButton() {
         tap(LOG_IN_BUTTON);
+    }
+
+    public void setRememberCheckbox() {
+        if (getAttribute(REMEMBER_CHECKBOX, "Checked").equals("false")) {
+            tap(REMEMBER_CHECKBOX);
+        }
     }
 
     @Override
