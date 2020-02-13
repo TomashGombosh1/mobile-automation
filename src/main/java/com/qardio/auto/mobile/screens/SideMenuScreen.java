@@ -100,25 +100,28 @@ public class SideMenuScreen extends AbstractScreen {
     }
 
     public void tapPreDriveChecklistButton() {
+        waitToBeVisible(PRE_DRIVE_CHECKLIST_BUTTON);
         tap(PRE_DRIVE_CHECKLIST_BUTTON);
     }
 
     public void tapFmcsaButton() {
+        waitToBeVisible(FMCSA_BUTTON);
         tap(FMCSA_BUTTON);
     }
 
     public void tapActionsButton() {
+        waitToBeVisible(ACTIONS_BUTTON);
         tap(ACTIONS_BUTTON);
     }
 
     public void tapWorkforceButton() {
+        waitToBeVisible(WORKFORCE_BUTTON);
         tap(WORKFORCE_BUTTON);
     }
 
     public void tapLogOutButton() {
         // todo in progress
         waitToBeVisible(DRIVER_NAME);
-        scrollService.scrollDown();
         tap(LOG_OUT_BUTTON);
     }
 

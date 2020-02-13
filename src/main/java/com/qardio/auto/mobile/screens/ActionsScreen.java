@@ -19,6 +19,28 @@ public class ActionsScreen extends AbstractScreen {
             MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value == 'Actions'"),
             ScrollTo.NO,
             true);
+    private static final AppElement EDIT_SUGGESTIONS_BUTTON = new AppElement(
+            "Edit suggestions button",
+            By.id(formatAndroidId("llES")),
+            MobileBy.iOSNsPredicateString("type = 'XCUIElementTypeButton' AND label CONTAINS 'Edit Suggestions'"),
+            ScrollTo.NO,
+            true);
+    private static final AppElement DMALFUNCTION_BUTTON = new AppElement(
+            "D/Malfunction button",
+            By.id(formatAndroidId("llDiag")),
+            MobileBy.iOSNsPredicateString("type = 'XCUIElementTypeButton' AND label CONTAINS 'D/Malfunction'"),
+            ScrollTo.NO,
+            true);
+    private static final AppElement NO_RECORD_ALERT = new AppElement(
+            "No records alert",
+            By.id("android:id/message"),
+            ScrollTo.NO,
+            true);
+    private static final AppElement NO_RECORD_ALERT_BUTTON = new AppElement(
+            "No records alert dismiss button",
+            By.id("android:id/button1"),
+            ScrollTo.NO,
+            true);
 
     public ActionsScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -27,6 +49,26 @@ public class ActionsScreen extends AbstractScreen {
     public String getScreenTitle() {
         waitToBeVisible(SCREEN_TITLE);
         return getText(SCREEN_TITLE);
+    }
+
+    public boolean isAlertPresent() {
+        return isElementVisible(NO_RECORD_ALERT);
+    }
+
+    public void dismissNoRecordsAlert() {
+        if (isAlertPresent()) {
+            tap(NO_RECORD_ALERT_BUTTON);
+        }
+    }
+
+    public void tapEditSuggestionsButton() {
+        waitToBeVisible(EDIT_SUGGESTIONS_BUTTON);
+        tap(EDIT_SUGGESTIONS_BUTTON);
+    }
+
+    public void tapDmalfunctionButton() {
+        waitToBeVisible(DMALFUNCTION_BUTTON);
+        tap(DMALFUNCTION_BUTTON);
     }
 
     @Override

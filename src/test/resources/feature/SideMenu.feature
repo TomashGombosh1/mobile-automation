@@ -27,6 +27,20 @@ Feature: Side menu feature
     When I tap the "Actions" menu button
     Then The "Actions" screen is opened
 
+  Scenario: User can access Edit suggestions screen from Actions screen
+    Given The "Side menu" is opened
+    When I tap the "Actions" menu button
+    Then The "Actions" screen is opened
+    When I tap the "Edit suggestions" button
+    Then The "Edit suggestions" screen is opened
+
+  Scenario: User can access D/Malfunction screen from Actions screen
+    Given The "Side menu" is opened
+    When I tap the "Actions" menu button
+    Then The "Actions" screen is opened
+    When I tap the "D/Malfunction" button
+    Then The "D/Malfunction" screen is opened
+
   Scenario: User can access Workforce screen
     Given The "Side menu" is opened
     When I tap the "Workforce" menu button
