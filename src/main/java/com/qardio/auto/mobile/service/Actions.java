@@ -45,7 +45,6 @@ public class Actions implements ActionService {
        return elementService.find(appElement).getText();
     }
 
-
     public String getAttribute(final AppElement appElement, final String attribute) {
         return elementService.find(appElement).getAttribute(attribute);
     }

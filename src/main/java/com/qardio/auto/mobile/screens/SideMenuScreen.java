@@ -68,6 +68,13 @@ public class SideMenuScreen extends AbstractScreen {
             ScrollTo.NO,
             true);
 
+    private static final AppElement SETTINGS_BUTTON = new AppElement(
+            "Settings button",
+            By.xpath("//*[@resource-id='com.iss.hos.phone:id/nav_view']//android.widget.TextView[@text='Settings']"),
+            MobileBy.iOSClassChain("**/XCUIElementTypeCell/XCUIElementTypeStaticText[`name BEGINSWITH \"Settings\"`]"),
+            ScrollTo.NO,
+            true);
+
     private static final AppElement LOG_OUT_BUTTON = new AppElement(
             "Log out button",
             By.xpath("//android.widget.TextView[contains(@text,'Log Out')]"),
@@ -117,6 +124,11 @@ public class SideMenuScreen extends AbstractScreen {
     public void tapWorkforceButton() {
         waitToBeVisible(WORKFORCE_BUTTON);
         tap(WORKFORCE_BUTTON);
+    }
+
+    public void tapSettingsButton() {
+        waitToBeVisible(SETTINGS_BUTTON);
+        tap(SETTINGS_BUTTON);
     }
 
     public void tapLogOutButton() {

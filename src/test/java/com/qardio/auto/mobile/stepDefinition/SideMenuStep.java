@@ -51,7 +51,7 @@ public class SideMenuStep {
         sideMenuScreen.tapLogOutButton();
     }
 
-    @When("^I tap the \"(Home|Vehicle|HOS|Actions|Workforce)\" menu button$")
+    @When("^I tap the \"(Home|Vehicle|HOS|Actions|Workforce|Settings)\" menu button$")
     public void iTapTheMenuButton(String button) {
         switch (button) {
             case "Home":
@@ -68,6 +68,9 @@ public class SideMenuStep {
                 break;
             case "Workforce":
                 sideMenuScreen.tapWorkforceButton();
+                break;
+            case "Settings":
+                sideMenuScreen.tapSettingsButton();
                 break;
         }
     }
@@ -103,5 +106,35 @@ public class SideMenuStep {
     @Then("^The \"Chat\" screen is opened$")
     public void theChatScreenIsOpened() {
         assertThat(chatScreen.isDisplayed()).isEqualTo(true);
+    }
+
+    @And("^I re-enter the \"(Home|Vehicle|HOS|Actions|Workforce|Settings)\" screen$")
+    public void iReEnterTheScreen(String button) {
+        switch (button) {
+            case "Home":
+                homeScreen.tapMenuButton();
+                sideMenuScreen.tapHomeButton();
+                break;
+            case "Vehicle":
+                homeScreen.tapMenuButton();
+                sideMenuScreen.tapVehicleButton();
+                break;
+            case "HOS":
+                homeScreen.tapMenuButton();
+                sideMenuScreen.tapHosButton();
+                break;
+            case "Actions":
+                homeScreen.tapMenuButton();
+                sideMenuScreen.tapActionsButton();
+                break;
+            case "Workforce":
+                homeScreen.tapMenuButton();
+                sideMenuScreen.tapWorkforceButton();
+                break;
+            case "Settings":
+                homeScreen.tapMenuButton();
+                sideMenuScreen.tapSettingsButton();
+                break;
+        }
     }
 }

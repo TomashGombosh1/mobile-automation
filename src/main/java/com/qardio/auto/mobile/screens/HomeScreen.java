@@ -63,7 +63,7 @@ public class HomeScreen extends AbstractScreen {
     }
 
     public void tapMenuButton() {
-        waitToBeVisible(MENU_BUTTON);
+        waitToBeClickable(MENU_BUTTON);
         tap(MENU_BUTTON);
     }
 
