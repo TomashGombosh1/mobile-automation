@@ -68,6 +68,11 @@ public class LoginScreen extends AbstractScreen {
         }
     }
 
+    public String getEnteredId() {
+        waitToBeVisible(ID_FIELD);
+        return getInputValue(ID_FIELD);
+    }
+
     @Override
     public boolean isDisplayed() {
 //        waitToBeVisible(ID_FIELD);

@@ -58,4 +58,14 @@ public class LoginStep {
         iTapTheButton();
         homeScreen.getScreenTitle();
     }
+
+    @And("^I set the \"Remember me\" checkbox$")
+    public void iSetTheCheckbox() {
+        loginScreen.setRememberCheckbox();
+    }
+
+    @Then("^The \"ID\" field is pre-populated$")
+    public void theFieldIsPrePopulated() {
+        assertThat(loginScreen.getEnteredId()).isEqualTo("april17d");
+    }
 }
