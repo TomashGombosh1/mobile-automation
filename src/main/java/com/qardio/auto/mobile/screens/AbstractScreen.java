@@ -73,6 +73,13 @@ public abstract class AbstractScreen {
     }
 
     /**
+     * Get element's attribute value
+     */
+    public String getAttribute(final AppElement appElement, final String attribute) {
+        return elementService.find(appElement).getAttribute(attribute);
+    }
+
+    /**
      * Presses the device's Back button. Only functional on Android!
      */
     public void pressDeviceBack() {

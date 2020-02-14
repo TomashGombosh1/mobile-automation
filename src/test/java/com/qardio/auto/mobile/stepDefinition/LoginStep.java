@@ -1,48 +1,71 @@
 package com.qardio.auto.mobile.stepDefinition;
 
 import com.qardio.auto.mobile.Hooks;
-import com.qardio.auto.mobile.config.ApplicationConfig;
-import com.qardio.auto.mobile.models.User;
-import com.qardio.auto.mobile.screens.DashboardScreen;
-import com.qardio.auto.mobile.screens.SignInScreen;
+import com.qardio.auto.mobile.screens.HomeScreen;
+import com.qardio.auto.mobile.screens.LoginScreen;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
- * @author Tomash Gombosh
+ * @author Oleksii Borzykin
  */
 public class LoginStep {
-    private DashboardScreen dashboardScreen;
-    private SignInScreen signInScreen;
+    private LoginScreen loginScreen;
+    private HomeScreen homeScreen;
 
     public LoginStep() {
-        this.dashboardScreen = new DashboardScreen(Hooks.driver);
-        this.signInScreen = new SignInScreen(Hooks.driver);
+        this.loginScreen = new LoginScreen(Hooks.driver);
+        this.homeScreen = new HomeScreen(Hooks.driver);
     }
 
-    @Given("^I am go to the Login Page$")
-    public void iAmGoToTheLoginPage() {
-        dashboardScreen.tapLogin();
+    @Given("^I am on the \"Login\" screen$")
+    public void iAmOnTheScreen() {
+        loginScreen.isDisplayed();
     }
 
-    @Given("I click sign in button")
-    public void iClickSignInButton() {
-        signInScreen.clickLogin();
+    @When("^I fill the form with (valid|invalid) data$")
+    public void iFillTheFormWithData(String creds) {
+        if (creds.equals("valid")) {
+            loginScreen.fillLogin("april17d", "qwer");
+        } else {
+            loginScreen.fillLogin("test010101", "0101010test");
+        }
     }
 
-    @Then("I am login in the application")
-    public void iAmLoginInTheApplication() {
-        assertThat(signInScreen.isDisplayed()).isEqualTo(true);
+    @And("^I tap the \"Log in\" button$")
+    public void iTapTheButton() {
+        loginScreen.tapLogInButton();
     }
 
-    @And("^I fill valid user data using properties file$")
-    public void iFillValidUserDataUsingPropertiesFile() {
-        signInScreen.fillLogin(new User(data -> {
-            data.setEmail(new ApplicationConfig().getBaseUser());
-            data.setPassword(new ApplicationConfig().getBaseUserPassword());
-        }));
+    @Then("^The \"Home\" screen (is|is not) opened$")
+    public void theScreenIsOpened(String status) {
+        if (status.equals("is")) {
+            assertThat(homeScreen.getScreenTitle()).isEqualTo("Home");
+            assertThat(homeScreen.getQrLabel()).isEqualTo("Scan Vehicle");
+        } else {
+            assertThat(loginScreen.isDisplayed()).isEqualTo(true);
+        }
+    }
+
+    @Given("^I logged in as valid user$")
+    public void iLoggedInAsValidUser() {
+        iAmOnTheScreen();
+        iFillTheFormWithData("valid");
+        iTapTheButton();
+        homeScreen.getScreenTitle();
+    }
+
+    @And("^I set the \"Remember me\" checkbox$")
+    public void iSetTheCheckbox() {
+        loginScreen.setRememberCheckbox();
+    }
+
+    @Then("^The \"ID\" field is pre-populated$")
+    public void theFieldIsPrePopulated() {
+        assertThat(loginScreen.getEnteredId()).isEqualTo("april17d");
     }
 }

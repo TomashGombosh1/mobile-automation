@@ -3,6 +3,7 @@ package com.qardio.auto.mobile.stepDefinition;
 import com.qardio.auto.mobile.Hooks;
 import com.qardio.auto.mobile.service.DeviceServiceImpl;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 public class BaseStep {
 
@@ -20,5 +21,10 @@ public class BaseStep {
     @Given("^I enable all network activity$")
     public void iEnableAllNetworkActivity() {
 
+    }
+
+    @When("^I restart the app$")
+    public void iRestartTheApp() {
+        deviceService.closeAndLaunchApp();
     }
 }

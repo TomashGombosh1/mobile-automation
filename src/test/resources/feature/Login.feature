@@ -1,13 +1,22 @@
 Feature: Sign In feature
 
-  Background:
-    Given I install application
-    And I enable all network activity
-    Then I am on Sign Page
+  Scenario: Sign In with valid credentials
+    Given I am on the "Login" screen
+    When I fill the form with valid data
+    And I tap the "Log in" button
+    Then The "Home" screen is opened
 
-  Scenario: Sign In scenario
-    Given I am go to the Login Page
-    And I fill valid user data using properties file
-    And I click sign in button
+  Scenario: Sign in with invalid credentials
+    Given I am on the "Login" screen
+    When I fill the form with invalid data
+    And I tap the "Log in" button
+    Then The "Home" screen is not opened
 
-    Then I am login in the application
+  Scenario: Remember me checkbox
+    Given I am on the "Login" screen
+    When I fill the form with valid data
+    And I set the "Remember me" checkbox
+    And I tap the "Log in" button
+    Then The "Home" screen is opened
+    When I restart the app
+    Then The "ID" field is pre-populated
