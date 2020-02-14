@@ -13,13 +13,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * @author Oleksii Borzykin
  */
 public class SettingsStep {
-    private HomeScreen homeScreen;
-    private SideMenuScreen sideMenuScreen;
     private SettingsScreen settingsScreen;
 
     public SettingsStep() {
-        this.homeScreen = new HomeScreen(Hooks.driver);
-        this.sideMenuScreen = new SideMenuScreen(Hooks.driver);
         this.settingsScreen = new SettingsScreen(Hooks.driver);
     }
 
