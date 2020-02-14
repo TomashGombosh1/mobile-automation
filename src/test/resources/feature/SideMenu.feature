@@ -53,7 +53,7 @@ Feature: Side menu feature
       And I re-enter the "Settings" screen
       Then Entered "<contact phone>" number and "<contact email>" address are saved in the settings
       Examples:
-        | contact phone | contact email |
-        | 9379992 | qatest@qatest.com |
-        | 1234567890 | qa@qatest.com |
+        | contact phone     | contact email     |
+        | 9379992           | qatest@qatest.com |
+        | 1234567890        | qa@qatest.com     |
         | 1-(456)-00-00-000 | testqa@qatest.com |

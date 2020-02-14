@@ -2,6 +2,7 @@ package com.qardio.auto.mobile.screens;
 
 import com.qardio.auto.mobile.common.AppElement;
 import com.qardio.auto.mobile.common.ScrollTo;
+import com.qardio.auto.mobile.config.ApplicationProperties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -39,9 +40,16 @@ public class SettingsScreen extends AbstractScreen {
     private static final AppElement SAVE_BUTTON = new AppElement(
             "Save button",
             By.id(formatAndroidId("btn_right")),
-            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value == 'SAVE'"),
+            MobileBy.AccessibilityId("SAVE"),
             ScrollTo.NO,
             true);
+
+    private static final AppElement ALERT_OK = new AppElement(
+            "confirmation Alert Ok button",
+            By.id(formatAndroidId("btn1")),
+            MobileBy.iOSNsPredicateString("type == 'XCUIElementTypeButton' AND name == 'OK'"),
+            ScrollTo.NO,
+            false);
 
     public SettingsScreen(final AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -65,6 +73,14 @@ public class SettingsScreen extends AbstractScreen {
     public void tapSaveButton() {
         waitToBeClickable(SAVE_BUTTON);
         tap(SAVE_BUTTON);
+        confirmChanges();
+    }
+
+    public void confirmChanges() {
+        if ("IOS".equals(ApplicationProperties.CURRENT_OS)) {
+            waitToBeClickable(ALERT_OK);
+            tap(ALERT_OK);
+        }
     }
 
     public String getSavedPhoneNumber() {
