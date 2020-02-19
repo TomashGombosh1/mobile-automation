@@ -23,7 +23,6 @@ public class Hooks {
         try {
             if (driver != null) {
                 driver.quit();
-
             }
         } finally {
             appiumServer.stopServer();

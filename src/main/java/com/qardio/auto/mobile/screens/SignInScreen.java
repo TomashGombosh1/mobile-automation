@@ -5,6 +5,7 @@ import com.qardio.auto.mobile.common.ScrollTo;
 import com.qardio.auto.mobile.config.ApplicationProperties;
 import com.qardio.auto.mobile.models.User;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
@@ -14,17 +15,17 @@ import org.openqa.selenium.By;
 public class SignInScreen extends AbstractScreen {
     private static final AppElement EMAIL_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "email_edit")),
+            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "edt_name")),
             ScrollTo.NO,
             true);
     private static final AppElement PASSWORD_FIELD = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "password_edit")),
+            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "edt_pwd")),
             ScrollTo.NO,
             true);
     private static final AppElement LOGIN_BUTTON = new AppElement(
             "Email field",
-            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "login_button")),
+            By.id(String.format("%s:id/%s", ApplicationProperties.ANDROID_APP_PACKAGE, "bth_login")),
             ScrollTo.NO,
             true);
 
@@ -58,6 +59,14 @@ public class SignInScreen extends AbstractScreen {
     }
 
     public void clickLogin() {
+        scrollService.scrollDown();
         tap(LOGIN_BUTTON);
+    }
+
+    public boolean checkLoginButtonId(final String id) {
+        return isElementPresent(new AppElement(data-> {
+            data.setAndroidLocator(MobileBy.id(id));
+            data.setIosLocator(By.id(id));
+        }));
     }
 }

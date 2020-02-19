@@ -29,14 +29,20 @@ public class DashboardScreen extends AbstractScreen {
     @Override
     public boolean isDisplayed() {
         waitToBeVisible(SIGN_IN_BUTTON);
+        scrollService.scrollDown();
         return allRequiredElementDisplayed();
     }
 
     public void tapLogin() {
+        isDisplayed();
         tap(SIGN_IN_BUTTON);
     }
 
     public void tapSignIn() {
         tap(SIGN_UP_BUTTON);
+    }
+
+    public void scroll() {
+        scrollService.scrollDown();
     }
 }

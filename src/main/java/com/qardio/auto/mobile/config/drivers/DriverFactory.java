@@ -9,6 +9,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -60,7 +61,6 @@ public class DriverFactory {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", applicationConfig.getPlatformName());
         capabilities.setCapability("deviceName", applicationConfig.getDeviceName());
-        capabilities.setCapability("udid", applicationConfig.getDeviceName());
         capabilities.setCapability("platformVersion", applicationConfig.getPlatformVersion());
         capabilities.setCapability("app", applicationConfig.getAppPath());
         capabilities.setCapability("noReset", true);

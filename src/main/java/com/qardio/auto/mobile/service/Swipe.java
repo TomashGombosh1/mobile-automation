@@ -95,7 +95,7 @@ public class Swipe implements SwipeService {
 
     @Override
     public void swipe(final Point start, final Point end) {
-        touch.press(PointOption.point(start.getX(), start.getY())).moveTo(PointOption.point(end.getX(), end.getY())).release();
+        touch.press(new PointOption().withCoordinates(start.getX(), start.getY())).moveTo(new PointOption().withCoordinates(end.getX(), end.getY())).release();
         this.driver.performTouchAction(touch);
     }
 }

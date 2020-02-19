@@ -5,9 +5,11 @@ import com.qardio.auto.mobile.config.ApplicationConfig;
 import com.qardio.auto.mobile.models.User;
 import com.qardio.auto.mobile.screens.DashboardScreen;
 import com.qardio.auto.mobile.screens.SignInScreen;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -44,5 +46,10 @@ public class LoginStep {
             data.setEmail(new ApplicationConfig().getBaseUser());
             data.setPassword(new ApplicationConfig().getBaseUserPassword());
         }));
+    }
+
+    @When("^I click on button \"([^\"]*)\" indetify by \"([^\"]*)\"$")
+    public void iClickOnButtonIndetifyBy(String arg0, String arg1){
+       signInScreen.checkLoginButtonId(arg1);
     }
 }

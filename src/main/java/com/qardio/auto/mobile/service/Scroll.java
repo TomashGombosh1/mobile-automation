@@ -77,6 +77,6 @@ public class Scroll implements ScrollService {
     @Override
     public void scrollDown() {
         log.info("Scrolling down");
-        swipeService.swipeVerticallyByPercent(30, -20);
+        swipeService.swipeVerticallyByPercent(30, -10);
     }
 }
