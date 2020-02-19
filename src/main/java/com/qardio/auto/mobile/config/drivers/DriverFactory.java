@@ -63,11 +63,14 @@ public class DriverFactory {
         capabilities.setCapability("udid", applicationConfig.getDeviceName());
         capabilities.setCapability("platformVersion", applicationConfig.getPlatformVersion());
         capabilities.setCapability("app", applicationConfig.getAppPath());
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("fullReset", false);
+        capabilities.setCapability("noReset", false);
         capabilities.setCapability("appPackage", applicationConfig.getPackageName());
         capabilities.setCapability("appActivity", applicationConfig.getStartActivity());
         capabilities.setCapability("automationName", "UiAutomator2");
         capabilities.setCapability("newCommandTimeout", 5000);
+        capabilities.setCapability("newSessionWaitTimeout", 360);
+        capabilities.setCapability("dontStopAppOnReset", true);
         log.info(String.format("Desired Capabilities for device %s", capabilities.toString()));
         return capabilities;
     }

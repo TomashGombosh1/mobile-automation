@@ -5,9 +5,11 @@ import com.qardio.auto.mobile.config.ApplicationConfig;
 import com.qardio.auto.mobile.models.User;
 import com.qardio.auto.mobile.screens.DashboardScreen;
 import com.qardio.auto.mobile.screens.SignInScreen;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
