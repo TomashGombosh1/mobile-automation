@@ -17,8 +17,4 @@ public class BaseStep {
         deviceService.uninstallAndReinstallApp();
     }
 
-    @Given("^I enable all network activity$")
-    public void iEnableAllNetworkActivity() {
-
-    }
 }

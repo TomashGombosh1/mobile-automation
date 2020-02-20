@@ -256,6 +256,10 @@ public abstract class AbstractScreen {
     public void scrollFromToElement(final AppElement startElement, final AppElement endElement) {
         elementService.scrollFromToElement(startElement, endElement);
     }
+
+    public boolean getAttribute(final AppElement appElement, final String attribute) {
+        return actionsService.getAttribute(appElement, attribute);
+    }
 }
 
 

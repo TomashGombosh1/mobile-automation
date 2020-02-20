@@ -27,4 +27,6 @@ public interface ActionService {
     void enterText(AppElement appElement, String text);
 
     void enterText(AppElement appElement, String text, boolean clear);
+
+    boolean getAttribute(AppElement appElement, String attribute);
 }

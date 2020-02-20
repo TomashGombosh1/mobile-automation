@@ -112,4 +112,9 @@ public class Actions implements ActionService {
         }
         elementService.find(appElement).sendKeys(text);
     }
+
+    @Override
+    public boolean getAttribute(final AppElement appElement, final String attribute) {
+        return Boolean.parseBoolean(elementService.find(appElement).getAttribute(attribute));
+    }
 }
