@@ -24,7 +24,8 @@ public class HomeScreenSteps {
     }
 
     @Then("^i see button \"(car|parking|ride)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"(true|false)\"$")
-    public void iSeeButtonWithAttributeSetTo(final String name, final String attribute, final String value) {
+    public void iSeeButtonOnHomeScreenWithAttributeSetTo(final String name, final String attribute, final String value) {
+        assertThat(homeScreen.isDisplayed()).isEqualTo(true);
         assertThat(homeScreen.getButtonAttribute(name, attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 
@@ -37,6 +38,8 @@ public class HomeScreenSteps {
             case "parking":
                 homeScreen.tapParkingButton();
                 break;
+            default:
+                throw new IllegalArgumentException("Element: " + button + " is not handled in switch");
         }
     }
 }

@@ -29,12 +29,14 @@ public class HomeScreen extends AbstractScreen {
     }
 
     public boolean getButtonAttribute(final String button, final String attribute) {
-        if ("car".equals(button)) {
-            return getAttribute(RENT_BUTTON, attribute);
-        } else if ("parking".equals(button)) {
-            return getAttribute(PARKING_BUTTON, attribute);
+        switch (button) {
+            case "car":
+                return getAttribute(RENT_BUTTON, attribute);
+            case "parking":
+                return getAttribute(PARKING_BUTTON, attribute);
+            default:
+                throw new IllegalArgumentException("Element: " + button + " is not handled in switch");
         }
-        return false;
     }
 
     public void tapParkingButton() {

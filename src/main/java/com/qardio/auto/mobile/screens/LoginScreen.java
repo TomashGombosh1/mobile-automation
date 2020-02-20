@@ -57,7 +57,7 @@ public class LoginScreen extends AbstractScreen {
            case "Show password":
                 return getAttribute(SHOW_PASSWORD_BUTTON, attribute);
             default:
-                throw new AssertionError("Element: " + element + " is not handled in switch");
+                throw new IllegalArgumentException("Element: " + element + " is not handled in switch");
         }
     }
 

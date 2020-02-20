@@ -32,8 +32,9 @@ public class ReservationsScreen extends AbstractScreen {
             return getAttribute(SIGN_IN_BUTTON, attribute);
         } else if ("qrcode".equals(button)) {
             return getAttribute(QRCODE_BUTTON, attribute);
+        } else {
+            throw new IllegalArgumentException("Element: " + button + " is not handled in switch");
         }
-        return false;
     }
 
     @Override

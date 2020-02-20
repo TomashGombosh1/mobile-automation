@@ -18,7 +18,8 @@ public class CarBookingSteps {
     }
 
     @Then("^i see (?:[^\"]*) \"(pick-up|modify drop-off location|start date|validate)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeTextfieldIdentifiedByWithAttributeSetTo(final String name, final String attribute, final String value) {
+    public void iSeeElementOnCarBookingScreenWithAttributeSetTo(final String name, final String attribute, final String value) {
+        assertThat(carBookingScreen.isDisplayed()).isEqualTo(true);
         assertThat(carBookingScreen.getElementAttribute(name, attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 }

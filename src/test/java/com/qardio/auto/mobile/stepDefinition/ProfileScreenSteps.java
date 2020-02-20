@@ -25,34 +25,34 @@ public class ProfileScreenSteps {
     }
 
     @Then("^i see button \"(login|sign-up)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeButtonIdentifiedByWithAttributeSetTo(String name, String attribute, String value) {
+    public void iSeeButtonOnProfileScreenWithAttributeSetTo(String name, String attribute, String value) {
         assertThat(profileScreen.isDisplayed()).isEqualTo(true);
         assertThat(profileScreen.getButtonAttribute(name, attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 
     @When("^i click on button \"login\" identified by \"button_signin\"$")
-    public void iClickOnButtonIdentifiedBy()  {
+    public void iTapLoginButtonOnProfileScreen()  {
         profileScreen.tapSignInButton();
     }
 
     @Then("^i see (?:[^\"]*) \"(email|password|forgotten password|Show password)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeTextfieldIdentifiedByWithAttributeSetTo(String element, String attribute, String value) {
+    public void iSeeElementOnLoginScreenWithAttributeSetTo(String element, String attribute, String value) {
         assertThat(loginScreen.isDisplayed()).isEqualTo(true);
         assertThat(loginScreen.getElementAttribute(element, attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 
     @When("^i click on button \"close\" identified by \"(?:[^\"]*)\"$")
-    public void iClickOnCloseButtonIdentifiedBy()  {
+    public void iTapCloseButtonOnLoginScreen()  {
         loginScreen.tapCloseButton();
     }
 
     @When("^i click on button \"signup\" identified by \"button_signup\"$")
-    public void iClickOnSignUpButton()  {
+    public void iTapSignUpButtonOnProfileScreen()  {
         profileScreen.tapSignUpButton();
     }
 
     @Then("^i see button \"(first name|last name|phone number)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeSignUpButtonIdentifiedByWithAttributeSetTo(String element, String attribute, String value) {
+    public void iSeeSignUpButtonOnSignUpScreenWithAttributeSetTo(String element, String attribute, String value) {
         assertThat(signUpScreen.isDisplayed()).isEqualTo(true);
         assertThat(signUpScreen.getElementAttribute(element, attribute)).isEqualTo(Boolean.parseBoolean(value));
     }

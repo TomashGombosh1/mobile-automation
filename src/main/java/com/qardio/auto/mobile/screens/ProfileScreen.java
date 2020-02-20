@@ -32,8 +32,9 @@ public class ProfileScreen extends AbstractScreen {
             return getAttribute(SIGN_IN_BUTTON, attribute);
         } else if ("sign-up".equals(name)) {
             return getAttribute(SIGN_UP_BUTTON, attribute);
+        } else {
+            throw new IllegalArgumentException("Element: " + name + " is not handled in switch");
         }
-        return false;
     }
 
     public void tapSignInButton() {

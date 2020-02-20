@@ -21,24 +21,24 @@ public class AssistanceSteps {
     }
 
     @When("^i click on menuitem \"faq/aide\" identified by \"(?:[^\"]*)\"$")
-    public void iClickOnMenuitemIdentifiedBy()  {
+    public void iTapMenuItemOnFaqScreen()  {
         assistanceScreen.tapFaqButton();
     }
 
     @Then("^i see menuitem \"(faq/aide|faq)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeMenuitemIdentifiedByWithAttributeSetTo(String name, String attribute, String value) {
+    public void iSeeMenuItemOnFaqScreenWithAttributeSetTo(String name, String attribute, String value) {
         assertThat(assistanceScreen.isDisplayed()).isEqualTo(true);
         assertThat(assistanceScreen.getFaqButtonAttribute(attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 
     @Then("^i see button \"back\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeButtonIdentifiedByWithAttributeSetTo(String attribute, String value) {
+    public void iSeeButtonOnFaqScreenWithAttributeSetTo(String attribute, String value) {
         assertThat(faqScreen.isDisplayed()).isEqualTo(true);
         assertThat(faqScreen.getBackButtonAttribute(attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 
     @When("^i click on button \"Back\" identified by \"(?:[^\"]*)\"$")
-    public void iClickOnButtonIdentifiedBy()  {
+    public void iTapBackButtonOnFaqScreen()  {
         faqScreen.tapBackButton();
     }
 }

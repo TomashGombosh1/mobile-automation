@@ -17,7 +17,8 @@ public class ReservationsSteps {
     }
 
     @Then("^i see button \"(sign-in|qrcode)\" identified by \"(?:[^\"]*)\" with attribute \"([^\"]*)\" set to \"([^\"]*)\"$")
-    public void iSeeButtonIdentifiedByWithAttributeSetTo(final String button, final String attribute, final String value) {
+    public void iSeeButtonOnReservationsScreenWithAttributeSetTo(final String button, final String attribute, final String value) {
+        assertThat(reservationsScreen.isDisplayed()).isEqualTo(true);
         assertThat(reservationsScreen.getButtonAttribute(button, attribute)).isEqualTo(Boolean.parseBoolean(value));
     }
 }

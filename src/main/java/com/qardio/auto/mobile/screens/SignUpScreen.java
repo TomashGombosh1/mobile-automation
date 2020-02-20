@@ -44,7 +44,7 @@ public class SignUpScreen extends AbstractScreen {
             case "phone number":
                 return getAttribute(PHONE_NUMBER_FIELD, attribute);
             default:
-                throw new AssertionError("Element: " + element + " is not handled in switch");
+                throw new IllegalArgumentException("Element: " + element + " is not handled in switch");
         }
     }
 

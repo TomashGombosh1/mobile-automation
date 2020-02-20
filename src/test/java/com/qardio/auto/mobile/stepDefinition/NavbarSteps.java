@@ -30,6 +30,8 @@ public class NavbarSteps {
             case "profile":
                 navbarScreen.tapProfileButton();
                 break;
+            default:
+                throw new IllegalArgumentException("Element: " + button + " is not handled in switch");
         }
     }
 }

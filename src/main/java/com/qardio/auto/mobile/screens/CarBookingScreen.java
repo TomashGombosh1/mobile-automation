@@ -50,7 +50,7 @@ public class CarBookingScreen extends AbstractScreen {
             case "validate":
                 return getAttribute(VALIDATE_BUTTON, attribute);
             default:
-                throw new AssertionError("Element: " + element + " is not handled in switch");
+                throw new IllegalArgumentException("Element: " + element + " is not handled in switch");
         }
     }
 
