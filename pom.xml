@@ -22,7 +22,7 @@
         <javax.version>1</javax.version>
         <gogle.guice.version>4.2.2</gogle.guice.version>
         <cucumber.version>1.2.5</cucumber.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <assertj.core.version>3.12.2</assertj.core.version>
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.checkstyle.version>3.1.0</maven.checkstyle.version>
